@@ -23,6 +23,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
 
   <description>Airwave Xtreme 150 hang glider (UIUC)</description>
 
+  <author>Michael Selig, Captain Slug</author>
   <flight-model>larcsim</flight-model>
   <aero>uiuc</aero>
   <uiuc-type>uiuc-hangglider</uiuc-type>
