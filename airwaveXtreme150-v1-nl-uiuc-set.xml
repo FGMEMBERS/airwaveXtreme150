@@ -29,7 +29,6 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
   <aircraft-dir>Aircraft/UIUC/airwaveXtreme150-v1-nl</aircraft-dir>
 
   <sound>
-   <audible>true</audible>
    <path>Aircraft/airwaveXtreme150/Sounds/uiuc/airwaveXtreme150-sound.xml</path>
   </sound>
 
