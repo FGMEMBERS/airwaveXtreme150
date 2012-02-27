@@ -14,6 +14,7 @@ Aircraft/airwaveXtreme150/Models/uiuc/hgldr-cs/README.TXT
 (courtesy of Captain Slug, captainslg@aol.com)
 
 Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
+             Feb 18, 2012 D-NXKT, D_NXKT@yahoo.de
 ************************************************************************
 -->
 
@@ -28,6 +29,11 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
   <aero>uiuc</aero>
   <uiuc-type>uiuc-hangglider</uiuc-type>
   <aircraft-dir>Aircraft/UIUC/airwaveXtreme150-v1-nl</aircraft-dir>
+
+  <startup>
+    <splash-texture>Aircraft/airwaveXtreme150/splash.png</splash-texture>
+    <splash-title>Airwave Xtreme 150</splash-title>
+  </startup>
 
   <sound>
    <path>Aircraft/airwaveXtreme150/Sounds/uiuc/airwaveXtreme150-sound.xml</path>
@@ -52,9 +58,113 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
    </config>
   </view>
 
+  <view n="100">
+    <name>Keel View</name>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <x-offset-m archive="y" type="double">0.00</x-offset-m>
+      <y-offset-m archive="y" type="double">-0.6</y-offset-m>
+      <z-offset-m archive="y" type="double">2.4</z-offset-m>
+      <pitch-offset-deg type="double">0</pitch-offset-deg>
+    </config>
+  </view>
+  
+  <current-view><view-number type="int">8</view-number></current-view> 
+    
+  <menubar>
+   <default>
+    <menu n="10">
+     <label>Airwave Xtreme 150</label>
+     <enabled type="bool">true</enabled>     
+     <item>
+      <label>Toggle pilot animation rotate + yaw</label>
+       <binding>
+        <command>property-toggle</command>
+        <property>sim/auto-coordination</property>
+        <value>0</value>
+       </binding>
+     </item>	
+    </menu>
+   </default>
+  </menubar>
+  
   <help>
    <title>Airwave Xtreme 150</title>
+
+      <key>
+        <name>9/PgUp</name>
+        <desc>increase throttle</desc>
+      </key>
+
+      <key>
+        <name>3/PgDn</name>
+        <desc>decrease throttle</desc>
+      </key>
+      
+      <key>
+        <name>Ctrl-U</name>
+        <desc>jump up 1000ft</desc>
+      </key>
+
+      <key>
+        <name>7/Home</name>
+        <desc>more prone pilot</desc>
+      </key>
+
+      <key>
+        <name>1/End</name>
+        <desc>erect pilot</desc>
+      </key>
+
+      <key>
+        <name>0/INSERT</name>
+        <desc>turn pilot left (only for appearance / no fdm function)</desc>
+      </key>
+
+      <key>
+        <name>ENTER</name>
+        <desc>turn pilot right (only for appearance / no fdm function)</desc>
+      </key>
+
+      <key>
+        <name>P</name>
+        <desc>toggle panel in "Cockpit View"</desc>
+      </key>
+
+      <line> </line>      
+      <line>Best flown with "Keel View" </line>
+      <line> </line>
+      
+      <line>Take-off:</line>
+      <line>Ctrl-U or incr. throttle</line>
+      <line> </line>
+      <line>Touch down:</line>
+      <line>1. erect pilot</line>
+      <line>2. wait until lower part of harness immerges in ground</line>
+      <line>3. reduce speed to trim speed while keeping altitude</line>
+      <line>4. push A-frame (pull joystick/mouse)</line>  
+      <line> </line> 
+      <line>Note: </line>             
+      <line>This hang glider uses the LaRCsim/UIUC fdm. Flying (under positiv g-force conditions) is quite realistic. </line> 
+      <line>Unfortunately there is no conjunction of this special fdm with weather and external forces. </line> 
+      <line>Hence flying with the influence of wind, turbulence, thermals and ridge lift is NOT possible. </line> 
+      <line> </line>
+      <line>More useful information about fdm:</line>
+      <line>/Aircraft/UIUC/airwaveXtreme150-v1-nl/README.airwaveXtreme150.html</line>   
+      <line> </line> 
+                  
   </help>
+
+  <status>alpha</status>
+  <rating>
+   <FDM type="int">4</FDM>
+   <systems type="int">1</systems>
+   <cockpit type="int">1</cockpit>
+   <model type="int">2</model>
+  </rating>
 
  </sim>
 </PropertyList>
