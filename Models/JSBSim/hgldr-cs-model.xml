@@ -1,0 +1,809 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <nasal>
+  <load>
+   var livery_update = aircraft.livery_update.new("Aircraft/airwaveXtreme150/Models/JSBSim/Variants");
+  </load>
+  <unload>
+   livery_update.stop();
+  </unload>
+ </nasal>
+
+ <path>hgldr_cs.ac</path>
+
+ <offsets>
+  <x-m>-1.5</x-m>
+  <z-m>1.1</z-m>
+  <pitch-deg>15</pitch-deg>
+ </offsets>
+
+<!-- __________________ Glider __________________ -->
+
+ <animation>
+  <type>rotate</type>
+   <object-name>Glider</object-name>  
+    <expression>
+     <product>
+      <property>surface-positions/left-aileron-pos-norm</property>
+      <property>gear/gear[2]/wow</property>
+      <value>-15</value>
+      <value>1</value>
+     </product>
+    </expression>
+    <center>
+      <x-m>1.536</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>0.9659258</x>
+      <y>0.0</y>
+      <z>0.2588190</z>
+    </axis>
+  </animation>
+
+ <animation>
+  <type>rotate</type>
+   <object-name>Glider</object-name>
+    <expression>
+     <table>
+      <product>
+       <property>surface-positions/elevator-pos-norm</property>
+       <property>gear/gear[2]/wow</property>
+       <value>-1</value>      
+      </product>
+      <entry><ind>-1.0</ind> <dep>-40</dep></entry>
+      <entry><ind>0</ind>    <dep>0</dep></entry>
+      <entry><ind>1.0</ind>  <dep>10</dep></entry>	       
+     </table>
+    </expression>
+
+    <center>
+      <x-m>1.536</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+ </animation> 
+
+ <animation>
+  <type>rotate</type>
+   <object-name>Glider</object-name>
+    <expression>
+     <product>
+      <property>surface-positions/rudder-pos-norm</property>
+      <property>gear/gear[2]/wow</property>
+      <value>-25</value>
+      <value>1</value>
+     </product>
+    </expression>
+    <center>
+      <x-m>1.536</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>-0.2588190</x>
+      <y>0.0</y>
+      <z>0.9659258</z>
+    </axis>
+ </animation>
+
+
+<!-- __________________ Pilot __________________ -->
+
+ <animation>
+  <type>rotate</type>
+   <object-name>Pilot</object-name>
+   <object-name>Hangstrap</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor>15</factor>
+    <center>
+      <x-m>1.536</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>0.9659258</x>
+      <y>0.0</y>
+      <z>0.2588190</z>
+    </axis>
+ </animation>
+  
+ <animation>
+  <type>rotate</type>
+   <object-name>Pilot</object-name>
+   <object-name>Hangstrap</object-name>
+    <property>surface-positions/elevator-pos-norm</property>    
+    <interpolation>
+      <entry><ind>-1.0</ind> <dep>-10</dep></entry>
+      <entry><ind>   0</ind> <dep>  0</dep></entry>
+      <entry><ind> 1.0</ind> <dep> 40</dep></entry>
+    </interpolation>
+    <center>
+      <x-m>1.536</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+ </animation> 
+
+ <animation>
+  <type>rotate</type>
+   <object-name>Pilot</object-name>
+   <object-name>Hangstrap</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor>25</factor>
+    <center>
+      <x-m>1.536</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>-0.2588190</x>
+      <y>0.0</y>
+      <z>0.9659258</z>
+    </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+   <object-name>Pilot</object-name>
+    <property>controls/flight/elevator-trim</property>
+     <interpolation>
+      <entry><ind>-.05</ind> <dep> 65</dep></entry>
+      <entry><ind>  0.</ind> <dep>-10</dep></entry>
+      <entry><ind> .05</ind> <dep>-25</dep></entry>
+    </interpolation>
+    <center>
+      <x-m>1.86</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.71</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+ </animation> 
+
+<!-- __________________ Upper Arms __________________ -->
+
+ <animation>
+  <type>rotate</type>
+   <object-name>ArmUpperLeft</object-name>
+   <object-name>ArmLowerLeft</object-name>
+   <object-name>HandLeft</object-name>  
+    <property>surface-positions/left-aileron-pos-norm</property>    
+    <factor>-40</factor>
+    <center>
+      <x-m>1.63</x-m>
+      <y-m>-0.20</y-m>
+      <z-m>-0.85</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+   <object-name>ArmUpperRight</object-name>
+   <object-name>ArmLowerRight</object-name>
+   <object-name>HandRight</object-name>  
+    <property>surface-positions/left-aileron-pos-norm</property>     
+    <factor>-40</factor>
+    <center>
+      <x-m>1.63</x-m>
+      <y-m>+0.20</y-m>
+      <z-m>-0.85</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+   <object-name>ArmUpperLeft</object-name>
+   <object-name>ArmLowerLeft</object-name>
+   <object-name>HandLeft</object-name>  
+   <object-name>ArmUpperRight</object-name>
+   <object-name>ArmLowerRight</object-name>
+   <object-name>HandRight</object-name>  
+    <property>surface-positions/elevator-pos-norm</property>
+    <interpolation>
+      <entry>
+        <ind>-1.0</ind>
+        <dep>+38</dep>
+      </entry>
+      <entry>
+        <ind>0.</ind>
+        <dep>0</dep>
+      </entry>
+      <entry>
+        <ind>0.6</ind>
+        <dep>-120</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>-85</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>1.63</x-m>
+      <y-m>-0.20</y-m>
+      <z-m>-0.85</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+ </animation> 
+
+ <animation>
+  <type>rotate</type>
+   <object-name>ArmUpperLeft</object-name>
+   <object-name>ArmLowerLeft</object-name>
+   <object-name>HandLeft</object-name>  
+   <object-name>ArmUpperRight</object-name>
+   <object-name>ArmLowerRight</object-name>
+   <object-name>HandRight</object-name>  
+    <property>controls/flight/elevator-trim</property>
+     <interpolation>
+      <entry><ind>-.05</ind> <dep> +5</dep></entry>     
+      <entry><ind>-.02</ind> <dep>-30</dep></entry>
+      <entry><ind>0.00</ind> <dep>+15</dep></entry>
+      <entry><ind> .05</ind> <dep>+35</dep></entry>
+    </interpolation>
+    <center>
+      <x-m>1.63</x-m>
+      <y-m>-0.20</y-m>
+      <z-m>-0.85</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+ </animation>   
+
+
+<!-- __________________ Lower Arms __________________ -->
+
+ <animation>
+  <type>rotate</type>
+   <object-name>ArmLowerLeft</object-name>
+   <object-name>HandLeft</object-name>  
+   <object-name>ArmLowerRight</object-name>
+   <object-name>HandRight</object-name>  
+    <property>surface-positions/elevator-pos-norm</property>
+    <interpolation>
+      <entry><ind>-1.0</ind> <dep>-35</dep></entry>
+      <entry><ind> 0.0</ind> <dep>  0</dep></entry>
+      <entry><ind>0.35</ind> <dep> 50</dep></entry>
+      <entry><ind> 0.6</ind> <dep> 55</dep></entry>
+      <entry><ind> 1.0</ind> <dep>-25</dep></entry>
+    </interpolation>
+    <center>
+      <x-m>1.595</x-m>
+      <y-m>-0.395</y-m>
+      <z-m>-1.03</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+ </animation> 
+
+
+<!-- __________________ Helmet+Vizor __________________ -->
+
+ <animation>
+  <type>rotate</type>
+   <object-name>Helmet</object-name>
+   <object-name>Vizor</object-name>
+    <property>controls/flight/elevator-trim</property>
+     <interpolation>
+      <entry>
+        <ind>-.05</ind>
+        <dep>-65</dep>
+      </entry>
+      <entry>
+        <ind>0</ind>
+        <dep>0</dep>
+      </entry>
+      <entry>
+        <ind>.05</ind>
+        <dep>+25</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>1.40</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.80</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+ </animation> 
+
+
+<!-- __________________ Harness __________________ -->
+
+ <animation>
+  <type>rotate</type>
+   <object-name>HarnessAft</object-name>
+   <object-name>HarnessBottom</object-name>
+    <property>controls/flight/elevator-trim</property>
+     <interpolation>
+      <entry>
+        <ind>-.05</ind>
+        <dep>-8.</dep>
+      </entry>
+      <entry>
+        <ind>0</ind>
+        <dep>0</dep>
+      </entry>
+      <entry>
+        <ind>.05</ind>
+        <dep>0.</dep>
+      </entry>
+    </interpolation>
+    <center>
+      <x-m>2.45</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.80</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+ </animation> 
+
+
+<!-- __________________ Upper Legs __________________ -->
+
+ <!-- left leg -->
+ <animation>
+   <type>rotate</type>
+     <object-name>LegLeftUpper</object-name>
+     <object-name>LegLeftLower</object-name>
+     <object-name>ShoeLeft</object-name>
+     <property>animation/running_leg_left</property>
+     <center>
+       <x-m>2.00</x-m>
+       <y-m>-0.101</y-m>
+       <z-m>-0.89</z-m>
+     </center>
+     <axis>
+       <x>0.0</x>
+       <y>1.0</y>
+       <z>0.0</z>
+     </axis>   
+ </animation> 
+
+ <!-- right leg -->   
+ <animation>
+   <type>rotate</type>
+     <object-name>LegRightUpper</object-name>
+      <object-name>LegRightLower</object-name>
+     <object-name>ShoeRight</object-name>
+     <property>animation/running_leg_right</property>
+     <center>
+       <x-m>2.00</x-m>
+       <y-m>-0.101</y-m>
+       <z-m>-0.89</z-m>
+     </center>
+     <axis>
+       <x>0.0</x>
+       <y>1.0</y>
+       <z>0.0</z>
+     </axis>     
+ </animation> 
+
+
+<!-- __________________ Lower Legs __________________ -->
+
+ <!-- lower left leg -->
+ <animation> 
+   <type>rotate</type>
+   <object-name>LegLeftLower</object-name>
+   <object-name>ShoeLeft</object-name>
+   <property>animation/running_leg</property>
+   <factor type="double">1.0</factor>  
+   <condition>
+    <greater-than-equals>
+     <property>animation/running_leg_sign</property>
+     <value>0</value>
+    </greater-than-equals>
+   </condition>   
+   <interpolation>
+    <entry><ind>-30.0</ind> <dep>  0.0</dep></entry>
+    <entry><ind>  0.0</ind> <dep>-60.0</dep></entry>
+    <entry><ind> 30.0</ind> <dep>  0.0</dep></entry>
+   </interpolation>   
+   <center>
+     <x-m>2.44</x-m>
+     <y-m>-0.075</y-m>
+     <z-m>-0.89</z-m>
+   </center>
+   <axis>
+     <x>0.0</x>
+     <y>1.0</y>
+     <z>0.0</z>
+   </axis>
+ </animation> 
+
+ <!-- lower right leg -->
+ <animation> 
+   <type>rotate</type>
+   <object-name>LegRightLower</object-name>
+   <object-name>ShoeRight</object-name>
+   <property>animation/running_leg</property>
+   <factor type="double">-1.0</factor> 
+   <condition>
+    <less-than-equals>
+     <property>animation/running_leg_sign</property>
+     <value>0</value>
+    </less-than-equals>
+   </condition>   
+   <interpolation>
+    <entry><ind>-30.0</ind> <dep>  0.0</dep></entry>
+    <entry><ind>  0.0</ind> <dep>-60.0</dep></entry>
+    <entry><ind> 30.0</ind> <dep>  0.0</dep></entry>
+   </interpolation>  
+   <center>
+     <x-m>2.44</x-m>
+     <y-m>-0.075</y-m>
+     <z-m>-0.89</z-m>
+   </center>
+   <axis>
+     <x>0.0</x>
+     <y>1.0</y>
+     <z>0.0</z>
+   </axis>
+ </animation>	
+
+
+ <!--   shoe left backward   -->
+ <!--
+ <animation> 
+   <type>rotate</type>
+   <object-name>ShoeLeft</object-name>
+   <property>animation/running_leg_left</property>
+   <factor type="double">1.0</factor> 
+   <interpolation>
+    <entry><ind> 60.0</ind> <dep> 0.0</dep></entry>
+    <entry><ind> 75.0</ind> <dep>  .0</dep></entry>
+    <entry><ind> 90.0</ind> <dep> 0.0</dep></entry>
+    <entry><ind>105.0</ind> <dep>  .0</dep></entry>
+    <entry><ind>120.0</ind> <dep> 0.0</dep></entry>
+   </interpolation>
+   <center>
+     <x-m>2.85</x-m>
+     <y-m>-0.075</y-m>
+     <z-m>-0.85</z-m>
+   </center>
+   <axis>
+     <x>0.0</x>
+     <y>1.0</y>
+     <z>0.0</z>
+   </axis>
+ </animation> 
+ -->
+ 
+ <!--   shoe left forward   -->
+ <!--
+ <animation> 
+   <type>rotate</type>
+   <object-name>ShoeLeft</object-name>
+   <property>animation/running_leg</property>
+   <factor type="double">1.0</factor> 
+   <condition>
+    <greater-than-equals>
+     <property>animation/running_leg_sign</property>
+     <value>0</value>
+    </greater-than-equals>
+   </condition>   
+   <interpolation>
+    <entry><ind> -30.0</ind> <dep>  0.0</dep></entry> 
+    <entry><ind>  0.0</ind> <dep> 0.0</dep></entry>
+    <entry><ind>30.0</ind> <dep>  0.0</dep></entry>
+   </interpolation>
+   <center>
+     <x-m>2.85</x-m>
+     <y-m>-0.075</y-m>
+     <z-m>-0.85</z-m>
+   </center>
+   <axis>
+     <x>0.0</x>
+     <y>1.0</y>
+     <z>0.0</z>
+   </axis>
+ </animation> 
+ -->   
+
+
+<!-- __________________ Special Treatments __________________ -->
+
+ <!--  shrink shoes: fake to get them entirely inside harness  -->
+ <animation>
+   <type>scale</type>
+    <object-name>ShoeLeft</object-name>
+    <object-name>ShoeRight</object-name>     
+     <property>gear/gear[1]/position-norm</property>
+ <interpolation>
+  <entry>
+   <ind> 0.0</ind>
+   <dep> 0.0</dep>
+  </entry>
+  <entry>
+   <ind> 0.001</ind>
+   <dep> 1.0</dep>
+  </entry>
+  <entry>
+   <ind> 1.0</ind>
+   <dep> 1.0</dep>
+  </entry>
+ </interpolation>
+      <x-factor>1.0</x-factor>
+      <y-factor>1.0</y-factor>
+      <z-factor>1.0</z-factor>
+    <nopreview/>
+ </animation> 
+
+ <!-- hide helmet in Pilot-View  -->
+ <animation>
+  <type>select</type>
+   <object-name>Helmet</object-name>
+   <object-name>Vizor</object-name>
+    <condition>
+     <greater-than>
+      <property>sim/current-view/view-number</property>
+      <value>0</value>
+     </greater-than>
+    </condition>   
+ </animation> 
+
+
+<!-- __________________ Colours __________________ -->
+
+ <animation>
+  <type>material</type>
+  <object-name>LeadingEdgeLeft</object-name>
+  <object-name>LeadingEdgeRight</object-name>
+  <property-base>sim/model/airwaveXtreme150/material/LeadingEdge</property-base>
+  <diffuse>
+   <red-prop>diffuse/red</red-prop>
+   <green-prop>diffuse/green</green-prop>
+   <blue-prop>diffuse/blue</blue-prop>
+  </diffuse>
+  <ambient>
+   <red-prop>ambient/red</red-prop>
+   <green-prop>ambient/green</green-prop>
+   <blue-prop>ambient/blue</blue-prop>
+  </ambient>  
+  <transparency>
+   <alpha-prop>transparency/alpha</alpha-prop>
+  </transparency>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>WingLeft</object-name>
+  <object-name>WingRight</object-name>    
+  <property-base>sim/model/airwaveXtreme150/material/SailUpper</property-base>
+  <ambient>
+   <red-prop>ambient/red</red-prop>
+   <green-prop>ambient/green</green-prop>
+   <blue-prop>ambient/blue</blue-prop>
+  </ambient>
+  <diffuse>
+   <red-prop>diffuse/red</red-prop>
+   <green-prop>diffuse/green</green-prop>
+   <blue-prop>diffuse/blue</blue-prop>
+  </diffuse>
+  <transparency>
+   <alpha-prop>transparency/alpha</alpha-prop>
+  </transparency>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>WingLeftTrailingEdge</object-name>
+  <object-name>WingRightTrailingEdge</object-name>
+  <property-base>sim/model/airwaveXtreme150/material/TrailingEdge</property-base>
+  <ambient>
+   <red-prop>ambient/red</red-prop>
+   <green-prop>ambient/green</green-prop>
+   <blue-prop>ambient/blue</blue-prop>
+  </ambient>
+  <diffuse>
+   <red-prop>diffuse/red</red-prop>
+   <green-prop>diffuse/green</green-prop>
+   <blue-prop>diffuse/blue</blue-prop>
+  </diffuse>
+  <transparency>
+   <alpha-prop>transparency/alpha</alpha-prop>
+  </transparency>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>Keelpocket</object-name>   
+  <property-base>sim/model/airwaveXtreme150/material/TrailingEdge</property-base>
+  <ambient>
+   <red-prop>ambient/red</red-prop>
+   <green-prop>ambient/green</green-prop>
+   <blue-prop>ambient/blue</blue-prop>
+  </ambient>
+  <diffuse>
+   <red-prop>diffuse/red</red-prop>
+   <green-prop>diffuse/green</green-prop>
+   <blue-prop>diffuse/blue</blue-prop>
+  </diffuse>
+  <transparency>
+   <alpha>1.</alpha>
+  </transparency>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>WingLeftLower</object-name>
+  <object-name>WingRightLower</object-name>
+  <object-name>WingLeftSingleSurf</object-name>
+  <object-name>WingRightSingleSurf</object-name>
+  
+  <property-base>sim/model/airwaveXtreme150/material/SailLower</property-base>
+  <ambient>
+   <red-prop>ambient/red</red-prop>
+   <green-prop>ambient/green</green-prop>
+   <blue-prop>ambient/blue</blue-prop>
+  </ambient>
+  <diffuse>
+   <red-prop>diffuse/red</red-prop>
+   <green-prop>diffuse/green</green-prop>
+   <blue-prop>diffuse/blue</blue-prop>
+  </diffuse>
+  <transparency>
+   <alpha-prop>transparency/alpha</alpha-prop>
+  </transparency>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>WingLeftLowerStripe</object-name>
+  <object-name>WingRightLowerStripe</object-name>	  
+  <property-base>sim/model/airwaveXtreme150/material/SailLowerStripe</property-base>
+  <ambient>
+   <red-prop>ambient/red</red-prop>
+   <green-prop>ambient/green</green-prop>
+   <blue-prop>ambient/blue</blue-prop>
+  </ambient>
+  <diffuse>
+   <red-prop>diffuse/red</red-prop>
+   <green-prop>diffuse/green</green-prop>
+   <blue-prop>diffuse/blue</blue-prop>
+  </diffuse>
+  <transparency>
+   <alpha-prop>transparency/alpha</alpha-prop>
+  </transparency>
+ </animation>
+
+
+<!-- __________________ Kingpost __________________ -->
+
+ <animation>
+  <type>select</type>
+   <object-name>Kingpost</object-name>
+   <object-name>UpperFrontWire</object-name>
+   <object-name>UpperBackWire</object-name>
+   <object-name>UpperSideWireLeft</object-name> 
+   <object-name>UpperSideWireRight</object-name>		     
+   <condition>
+     <property>sim/model/airwaveXtreme150/kingpost</property>
+   </condition>
+   <nopreview/>
+ </animation>
+
+
+<!-- __________________ Single/Double Surface __________________ -->
+
+ <animation>
+  <type>select</type>
+   <object-name>WingLeftSingleSurf</object-name>
+   <object-name>WingRightSingleSurf</object-name>
+   <condition>
+     <property>sim/model/airwaveXtreme150/single_surface</property>
+   </condition>
+   <nopreview/>
+ </animation>
+
+ <animation>
+  <type>select</type>
+   <object-name>WingLeftLower</object-name>
+   <object-name>WingRightLower</object-name>   
+   <object-name>WingLeftLowerStripe</object-name>
+   <object-name>WingRightLowerStripe</object-name>
+   <condition>
+    <not>
+     <property>sim/model/airwaveXtreme150/single_surface</property>
+    </not>
+   </condition>
+ </animation>
+
+
+<!-- __________________ Wheels __________________ -->
+
+ <animation>
+  <type>select</type>
+   <object-name>WheelLeft</object-name>
+   <object-name>WheelRight</object-name>
+   <condition>
+     <property>sim/model/airwaveXtreme150/wheels</property>
+   </condition>
+   <nopreview/>
+ </animation>
+
+ <animation> 
+   <type>spin</type>  <!-- Unit = RPM  -->
+     <object-name>WheelLeft</object-name>
+     <property>fdm/jsbsim/gear/unit[10]/wheel-speed-fps</property>
+     <factor>-32.34</factor>
+     <center>
+       <x-m>1.364</x-m>
+       <y-m>-0.657</y-m>
+       <z-m>-1.290</z-m>
+     </center>
+     <axis>
+       <x>0.0</x>
+       <y>1.0</y>
+       <z>0.0</z>
+     </axis>
+ </animation>
+
+ <animation> 
+   <type>spin</type>  <!-- Unit = RPM  -->
+     <object-name>WheelRight</object-name>
+     <property>fdm/jsbsim/gear/unit[11]/wheel-speed-fps</property>
+     <factor>-32.34</factor>
+     <center>
+       <x-m>1.364</x-m>
+       <y-m>0.675</y-m>
+       <z-m>-1.290</z-m>
+     </center>
+     <axis>
+       <x>0.0</x>
+       <y>1.0</y>
+       <z>0.0</z>
+     </axis>
+ </animation>
+
+
+<!-- __________________ Parachute __________________ -->
+
+ <model>
+    <path>Aircraft/airwaveXtreme150/Models/JSBSim/parachute.xml</path>
+ </model> 
+   
+</PropertyList>

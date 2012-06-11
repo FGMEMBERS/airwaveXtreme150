@@ -41,7 +41,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
 
   <panel>
    <path>Aircraft/Generic/Panels/generic-vfr-panel.xml</path>
-   <visibility>true</visibility>
+   <visibility>false</visibility>
   </panel>
 
   <panel_2>
@@ -83,7 +83,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
       <label>Toggle pilot animation rotate + yaw</label>
        <binding>
         <command>property-toggle</command>
-        <property>sim/auto-coordination</property>
+        <property>controls/flight/auto-coordination</property>
         <value>0</value>
        </binding>
      </item>	
@@ -167,4 +167,5 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
   </rating>
 
  </sim>
+
 </PropertyList>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<system name="Kingpost">
+  <channel name="Channel Kingpost">    
+  <!-- doesn't work. Don't know why (the same for wheels is working) -->         
+    <switch name="Kingpost_On_Off">
+      <default value="5.66"/>
+      <test value="0.">
+        /sim/model/airwaveXtreme150/kingpost == 0
+      </test>
+      <output>contact/unit[12]/z-position</output> 
+    </switch>             
+  </channel>
+</system>
+

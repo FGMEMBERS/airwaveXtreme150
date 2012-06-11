@@ -1,0 +1,37 @@
+Changes June 2012 by D-NXKT:
+- conversion from UIUC to JSBSim
+- more realistic appearance (e.g. twisted wing)
+- added kingpost, single surface, wheels, parachute
+- added legs and shoes
+- running animation
+- added harness-view and wing-tip-view
+- view animation
+- highly configurable (different versions)
+- added performance settings (glide-ratio, weight, sail-area)
+- added whack sound
+
+
+Changes February 2012 by D-NXKT:
+
+- convert model hgdlr_cs.mdl to hgdlr_cs.ac
+- convert textures hgdlr_cs.0af to hgdlr_cs0.rgb
+- convert textures hgdlr_cs.1af to hgdlr_cs1.rgb
+- add missing pilot-neck and back-wires
+- retexturing
+- repainting
+- shifting cg of model to origin (0,0,0)
+- rotate model to fit (visible) incidence
+- adapt contact points
+- pilot animation
+- additional view (keel view)
+- fdm unchanged!
+- add aircraft help
+- add aircraft status
+- add splash.png
+- update thumbnail.jpg
+
+
+
+
+
+

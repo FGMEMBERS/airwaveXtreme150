@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <fdm>
+  <jsbsim>
+   <aero>
+    <max-glide-ratio>10.</max-glide-ratio>
+   </aero>
+  </jsbsim>
+ </fdm>
+
+ <sim>
+ 
+  <model>
+
+   <livery>
+    <name type="string">SingleSurface_Blue2</name>
+   </livery>
+
+   <airwaveXtreme150>
+     <name type="string">SingleSurface_Blue2</name>
+
+     <single_surface type="bool">true</single_surface>
+     <kingpost       type="bool">true</kingpost>
+     <wheels         type="bool">false</wheels> 
+
+    <material>
+
+     <LeadingEdge>
+      <diffuse>
+       <red>0.0</red>
+       <green>0.</green>
+       <blue>1.</blue>
+      </diffuse>
+      <transparency>
+       <alpha>1.0</alpha>
+      </transparency>
+     </LeadingEdge>
+
+     <SailUpper>
+      <diffuse>
+       <red>0.5</red>
+       <green>0.5</green>
+       <blue>1.</blue>
+      </diffuse>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>
+     </SailUpper>
+
+     <TrailingEdge>
+      <diffuse>
+       <red>0.0</red>
+       <green>0.</green>
+       <blue>1.</blue>
+      </diffuse>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>
+     </TrailingEdge>
+
+     <SailLower>
+      <diffuse>
+       <red>0</red>
+       <green>0</green>
+       <blue>1</blue>
+      </diffuse>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>
+     </SailLower>
+
+     <SailLowerStripe>
+      <diffuse>
+       <red>1.0</red>
+       <green>1.</green>
+       <blue>1.</blue>
+      </diffuse>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>  
+     </SailLowerStripe>
+
+    </material>
+    
+   </airwaveXtreme150>
+   
+  </model>
+  
+ </sim>
+ 
+</PropertyList>

@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<name>variometer</name>
+	<layout>vbox</layout>
+	<x>-40</x>
+	<y>-40</y>
+
+	<group>
+		<layout>hbox</layout>
+		<empty><stretch>1</stretch></empty>
+
+		<text>
+			<label>Variometer</label>
+		</text>
+
+		<empty><stretch>1</stretch></empty>
+
+		<button>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<legend></legend>
+			<default>1</default>
+			<keynum>27</keynum>
+			<border>2</border>
+
+			<binding>
+				<command>nasal</command>
+				<script>airwaveXtreme150.variometer.close()</script>
+			</binding>
+		</button>
+	</group>
+
+	<hrule/>
+
+	<group>
+		<layout>hbox</layout>
+		<empty><pref-width>4</pref-width></empty>
+
+		<checkbox>
+			<halign>left</halign>
+			<label>Power</label>
+			<property>instrumentation/variometer/switch</property>
+			<live>1</live>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+		</checkbox>
+
+		<empty><stretch>1</stretch></empty>
+	</group>
+
+	<group>
+		<layout>vbox</layout>
+		<empty><pref-width>4</pref-width></empty>
+
+		<slider>
+			<name>volume</name>
+			<property>/instrumentation/variometer/volume</property>
+			<legend>Volume</legend>
+			<pref-width>250</pref-width>
+			<live>1</live>
+			<min>0</min>
+			<max>1</max>
+			<binding>
+				<command>dialog-apply</command>
+				<object-name>volume</object-name>
+			</binding>
+		</slider>
+		<slider>
+			<name>sensitivity</name>
+			<property>/instrumentation/variometer/sensitivity</property>
+			<legend>Sensitivity</legend>
+			<pref-width>250</pref-width>
+			<live>1</live>
+			<min>0</min>
+			<max>0.5</max>
+			<binding>
+				<command>dialog-apply</command>
+				<object-name>sensitivity</object-name>
+			</binding>
+		</slider>
+	</group>
+	
+	<empty><pref-height>3</pref-height></empty>
+
+</PropertyList>
