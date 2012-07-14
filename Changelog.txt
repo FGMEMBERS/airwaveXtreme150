@@ -1,4 +1,16 @@
+Changes July 2012 by D-NXKT:
+
+- Enable multiplayer (animations and variants but NOT for individual settings)
+- Possibility to autosave individual settings
+- Make generic panel visible on demand in all views and view directions
+- Model: Tried to get rid of sail intersections at wing tip (seen with ATI cards)
+- Minor corrections in "Performance Settings" (Metric units set immediately)
+- Minor corrections for harness (reduced texture fighting / modified prone animation)
+- New thumbnail.jpg and splash.png
+   
+   
 Changes June 2012 by D-NXKT:
+
 - conversion from UIUC to JSBSim
 - more realistic appearance (e.g. twisted wing)
 - added kingpost, single surface, wheels, parachute

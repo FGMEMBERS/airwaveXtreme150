@@ -7,6 +7,12 @@
    <aero>
     <max-glide-ratio>10.</max-glide-ratio>
    </aero>
+   <inertia>
+    <pointmass-weight-lbs>200.</pointmass-weight-lbs>
+   </inertia>
+   <metrics>
+    <Sw-sqft>154.0</Sw-sqft>
+   </metrics>
   </jsbsim>
  </fdm>
 

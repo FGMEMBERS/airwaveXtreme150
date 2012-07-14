@@ -373,7 +373,7 @@
           <script>
             var area_sqft = getprop("/fdm/jsbsim/metrics/Sw-sqft");
 	    var area_sqm = area_sqft * 0.09290;
-            setprop("/fdm/jsbsim/metrics/Sw-sqm",area_sqm) ;
+            setprop("/fdm/jsbsim/metrics/Sw-sqm",area_sqm);
           </script>
         </binding>
       </slider>

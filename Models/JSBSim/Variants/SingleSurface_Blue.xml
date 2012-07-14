@@ -7,6 +7,12 @@
    <aero>
     <max-glide-ratio>10.</max-glide-ratio>
    </aero>
+   <inertia>
+    <pointmass-weight-lbs>200.</pointmass-weight-lbs>
+   </inertia>
+   <metrics>
+    <Sw-sqft>154.0</Sw-sqft>
+   </metrics>
   </jsbsim>
  </fdm>
 
@@ -24,7 +30,6 @@
      <single_surface type="bool">true</single_surface>
      <kingpost       type="bool">true</kingpost>
      <wheels         type="bool">true</wheels>     
-     <wheels         type="bool">true</wheels> 
 
     <material>
 

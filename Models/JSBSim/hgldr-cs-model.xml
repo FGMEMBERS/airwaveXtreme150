@@ -5,11 +5,129 @@
  <nasal>
   <load>
    var livery_update = aircraft.livery_update.new("Aircraft/airwaveXtreme150/Models/JSBSim/Variants");
+
+   ##############################################################################
+   # The on-load Nasal is not executed when this file is loaded as the user aircraft.
+   ##############################################################################
+   var rplayer = cmdarg();
+   # Set up property aliases for animations.
+
+   rplayer.getNode("sim/model/airwaveXtreme150/kingpost", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/int[0]"));
+   rplayer.getNode("sim/model/airwaveXtreme150/single_surface", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/int[1]"));
+   rplayer.getNode("sim/model/airwaveXtreme150/wheels", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/int[2]"));
+
+   rplayer.getNode("gear/gear[2]/wow", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/int[3]"));
+   rplayer.getNode("animation/running_leg_left", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[0]"));  
+   rplayer.getNode("animation/running_leg_right", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[1]"));  
+   rplayer.getNode("animation/running_leg", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[2]")); 
+   rplayer.getNode("animation/running_leg_sign", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[3]")); 
+   rplayer.getNode("controls/flight/elevator-trim", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[4]"));
+   rplayer.getNode("fdm/jsbsim/fcs/parachute-pos-norm", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[5]")); 
+   rplayer.getNode("fdm/jsbsim/gear/unit[10]/wheel-speed-fps", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[6]")); 
+   rplayer.getNode("fdm/jsbsim/gear/unit[11]/wheel-speed-fps", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[7]")); 
+
+   rplayer.getNode("sim/current-view/view-number", 1).setIntValue(1); # set view=1 to prevent deselected helmet
+
+   # material aliases (diffuse to ambient)
+   rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/ambient/red", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/red"));
+   rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/ambient/green", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/green"));
+   rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/ambient/blue", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/blue"));
+
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailUpper/ambient/red", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/SailUpper/diffuse/red"));
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailUpper/ambient/green", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/SailUpper/diffuse/green"));
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailUpper/ambient/blue", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/SailUpper/diffuse/blue"));
+ 
+   rplayer.getNode("sim/model/airwaveXtreme150/material/TrailingEdge/ambient/red", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/TrailingEdge/diffuse/red"));
+   rplayer.getNode("sim/model/airwaveXtreme150/material/TrailingEdge/ambient/green", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/TrailingEdge/diffuse/green"));
+   rplayer.getNode("sim/model/airwaveXtreme150/material/TrailingEdge/ambient/blue", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/TrailingEdge/diffuse/blue"));
+
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailLower/ambient/red", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/SailLower/diffuse/red"));
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailLower/ambient/green", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/SailLower/diffuse/green"));
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailLower/ambient/blue", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/SailLower/diffuse/blue"));
+    
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailLowerStripe/ambient/red", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/SailLowerStripe/diffuse/red"));
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailLowerStripe/ambient/green", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/SailLowerStripe/diffuse/green"));
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailLowerStripe/ambient/blue", 1).
+     alias(rplayer.getNode("sim/model/airwaveXtreme150/material/SailLowerStripe/diffuse/blue"));
+
+   # print("airwaveXtreme150 loaded")
+   
   </load>
+
   <unload>
    livery_update.stop();
+
+   # unalias
+   rplayer.getNode("sim/model/airwaveXtreme150/kingpost", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/single_surface", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/wheels", 1).unalias();
+
+   rplayer.getNode("gear/gear[2]/wow", 1).unalias();
+   # rplayer.getNode("sim/current-view/view-number", 1).unalias();
+
+   rplayer.getNode("animation/running_leg_left", 1).unalias();  
+   rplayer.getNode("animation/running_leg_right", 1).unalias();  
+   rplayer.getNode("animation/running_leg", 1).unalias(); 
+   rplayer.getNode("animation/running_leg_sign", 1).unalias(); 
+   rplayer.getNode("controls/flight/elevator-trim", 1).unalias();
+   rplayer.getNode("fdm/jsbsim/fcs/parachute-pos-norm", 1).unalias(); 
+   rplayer.getNode("fdm/jsbsim/gear/unit[10]/wheel-speed-fps", 1).unalias(); 
+   rplayer.getNode("fdm/jsbsim/gear/unit[11]/wheel-speed-fps", 1).unalias(); 
+
+   # unalias ambient material
+   rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/ambient/red", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/ambient/green", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/ambient/blue", 1).unalias();
+
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailUpper/ambient/red", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailUpper/ambient/green", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailUpper/ambient/blue", 1).unalias();
+ 
+   rplayer.getNode("sim/model/airwaveXtreme150/material/TrailingEdge/ambient/red", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/material/TrailingEdge/ambient/green", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/material/TrailingEdge/ambient/blue", 1).unalias();
+
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailLower/ambient/red", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailLower/ambient/green", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailLower/ambient/blue", 1).unalias();
+    
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailLowerStripe/ambient/red", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailLowerStripe/ambient/green", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/material/SailLowerStripe/ambient/blue", 1).unalias();
+
+   # print("airwaveXtreme150 unloaded");
+  
   </unload>
+  
  </nasal>
+
+
 
  <path>hgldr_cs.ac</path>
 
@@ -354,19 +472,10 @@
    <object-name>HarnessAft</object-name>
    <object-name>HarnessBottom</object-name>
     <property>controls/flight/elevator-trim</property>
-     <interpolation>
-      <entry>
-        <ind>-.05</ind>
-        <dep>-8.</dep>
-      </entry>
-      <entry>
-        <ind>0</ind>
-        <dep>0</dep>
-      </entry>
-      <entry>
-        <ind>.05</ind>
-        <dep>0.</dep>
-      </entry>
+    <interpolation>
+      <entry><ind>-0.05</ind> <dep>-10.</dep></entry>
+      <entry><ind>-0.02</ind> <dep>  0.</dep></entry>
+      <entry><ind> 0.05</ind> <dep>  0.</dep></entry>
     </interpolation>
     <center>
       <x-m>2.45</x-m>

@@ -40,6 +40,7 @@ override those by providing <w>Aircraft</w> and <h>..</h> properties with the
  <h>150</h> 
  <y-offset>0</y-offset>
  <view-height>768</view-height>
+ <autohide>0</autohide>
 
  <instruments>
 

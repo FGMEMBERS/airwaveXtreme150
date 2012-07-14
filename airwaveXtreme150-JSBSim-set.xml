@@ -16,6 +16,7 @@ Aircraft/airwaveXtreme150/Models/uiuc/hgldr-cs/README.TXT
 Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
              Feb 18, 2012 D-NXKT, D_NXKT@yahoo.de
 	     June 10, 2012 D-NXKT, D_NXKT@yahoo.de
+	     July 14, 2012 D-NXKT
 ************************************************************************
 -->
 
@@ -26,7 +27,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
   <description>Airwave Xtreme 150 hang glider (JSBSim)</description>
 
   <author>Michael Selig, Captain Slug, D-NXKT</author>
-  <aircraft-version>June 2012</aircraft-version>
+  <aircraft-version>July 2012</aircraft-version>
   <flight-model>jsb</flight-model>
   <aero>Models/JSBSim/airwaveXtreme150-JSBSim</aero>
   
@@ -43,12 +44,13 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
    <!-- generic panel imperial units -->
    <path>Aircraft/airwaveXtreme150/Panels/generic-panel-imperial-units.xml</path>   
    <visibility>false</visibility>
+   <hide-nonzero-view>false</hide-nonzero-view>
+   <hide-nonzero-heading-offset>false</hide-nonzero-heading-offset>
   </panel>
 
   <panel_2>
    <!-- generic panel metric units -->
    <path>Aircraft/airwaveXtreme150/Panels/generic-panel-metric-units.xml</path>
-   <visibility>false</visibility>
   </panel_2>
 
   <model>
@@ -57,7 +59,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
    <livery>
     <file type="string"/>
    </livery>
-
+   
    <airwaveXtreme150>
     <material>
 
@@ -163,12 +165,13 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
     <float n="2" alias="/animation/running_leg"/>
     <float n="3" alias="/animation/running_leg_sign"/> 
     <float n="4" alias="/controls/flight/elevator-trim"/>
-    <float n="5" alias="/gear/gear[1]/position-norm"/>
+    <float n="5" alias="/fdm/jsbsim/fcs/parachute-pos-norm"/>
+    <float n="6" alias="/fdm/jsbsim/gear/unit[10]/wheel-speed-fps"/>
+    <float n="7" alias="/fdm/jsbsim/gear/unit[11]/wheel-speed-fps"/>        
     <int n="0" alias="/sim/model/airwaveXtreme150/kingpost"/>
     <int n="1" alias="/sim/model/airwaveXtreme150/single_surface"/>
-    <int n="2" alias="/sim/model/airwaveXtreme150/wheels"/>
+    <int n="2" alias="/sim/model/airwaveXtreme150/wheels"/> 
     <int n="3" alias="/gear/gear[2]/wow"/>
-    <int n="4" alias="/sim/current-view/view-number"/>    
    </generic>
   </multiplay>
 
@@ -283,7 +286,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
         <command>nasal</command>
         <script>aircraft.livery.dialog.open()</script>
        </binding>
-     </item>	
+     </item>
 
      <item>                               
       <label>----- Manual Customization -----</label>    
@@ -339,8 +342,28 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
      <item>
       <label>Performance Settings</label>
        <binding>
-       <command>nasal</command>
+        <command>nasal</command>
         <script>airwaveXtreme150.performance_settings_dialog.open()</script>
+       </binding>
+       <binding>       
+        <command>nasal</command>
+        <script>
+         var weight_lbs = getprop("/fdm/jsbsim/inertia/empty-weight-lbs");
+         var weight_kg = weight_lbs * 0.453592;
+         setprop("/fdm/jsbsim/inertia/empty-weight-kg",weight_kg);
+         
+         var weight_lbs = getprop("/fdm/jsbsim/inertia/pointmass-weight-lbs");
+         var weight_kg = weight_lbs * 0.453592;
+         setprop("/fdm/jsbsim/inertia/pointmass-weight-kg",weight_kg);
+
+         var weight_lbs = getprop("/fdm/jsbsim/inertia/weight-lbs");
+         var weight_kg = weight_lbs * 0.453592;
+         setprop("/fdm/jsbsim/inertia/weight-kg",weight_kg);
+
+         var area_sqft = getprop("/fdm/jsbsim/metrics/Sw-sqft");
+         var area_sqm = area_sqft * 0.09290;
+         setprop("/fdm/jsbsim/metrics/Sw-sqm",area_sqm);
+        </script>
        </binding>
      </item>	
     
@@ -361,7 +384,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
       <label>Toggle Pilot Animation Rotate + Yaw</label>
        <binding>
         <command>property-toggle</command>
-      <!--  <property>sim/auto-coordination</property> -->
+        <!-- <property>sim/auto-coordination</property> -->
         <property>controls/flight/auto-coordination</property>
         <value>0</value> 
        </binding>
@@ -378,7 +401,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
         <desc>Running forward / increase throttle</desc>
       </key>
       <key>
-        <name>3/PgDn</name>
+        <name>3/PgDn</name>    
         <desc>walking backward / decrease throttle</desc>
       </key>
       <key>
@@ -423,14 +446,22 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
         <desc>deploy parachute / retract parachute</desc>
       </key>
 
-      <line> </line>      
+      <line> </line>
       <line>Best flown with "Keel View" </line>
       <line> </line>
+
+      <line>Choose predefined variant "ZeroVariantForAutosave" to enable</line>
+      <line>   autosave of individual settings.</line>
+ 
+      <line>Multiplayer is enabled for predefined variants only </line>
+      <line>   (except "ZeroVariantForAutosave").</line>
+
+      <line> </line>      
  
       <line>Important for ground handling:</line>
-      <line>The running force (forward) is set to 0 by only once</line> 
-      <line> pressing 3/PgDn (backward) and vice versa.</line>
-      <line> Once in air the force is also set to 0.</line>
+      <line>The running force (forward) is set to 0 by only once pressing</line> 
+      <line>   3/PgDn (backward) and vice versa.</line>
+      <line>   Once in air the force is also set to 0.</line>
       <line>Breaks ("b") are usable.</line> 
       <line>The parking-brake is set automatically after inserting the legs.</line>
       <line> </line>
@@ -458,6 +489,48 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
       <line> </line> 
                   
   </help>
+
+  <aircraft-data>
+  
+    <path>/sim/model/airwaveXtreme150/kingpost</path>
+    <path>/sim/model/airwaveXtreme150/single_surface</path>
+    <path>/sim/model/airwaveXtreme150/wheels</path>
+
+    <path>/sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/red</path>
+    <path>/sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/green</path>
+    <path>/sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/blue</path>	
+    <path>/sim/model/airwaveXtreme150/material/LeadingEdge/transparency/alpha</path>
+    
+    <path>/sim/model/airwaveXtreme150/material/SailUpper/diffuse/red</path>
+    <path>/sim/model/airwaveXtreme150/material/SailUpper/diffuse/green</path>
+    <path>/sim/model/airwaveXtreme150/material/SailUpper/diffuse/blue</path>	
+    <path>/sim/model/airwaveXtreme150/material/SailUpper/transparency/alpha</path>
+    
+    <path>/sim/model/airwaveXtreme150/material/TrailingEdge/diffuse/red</path>
+    <path>/sim/model/airwaveXtreme150/material/TrailingEdge/diffuse/green</path>
+    <path>/sim/model/airwaveXtreme150/material/TrailingEdge/diffuse/blue</path>	
+    <path>/sim/model/airwaveXtreme150/material/TrailingEdge/transparency/alpha</path>
+    
+    <path>/sim/model/airwaveXtreme150/material/SailLower/diffuse/red</path>
+    <path>/sim/model/airwaveXtreme150/material/SailLower/diffuse/green</path>
+    <path>/sim/model/airwaveXtreme150/material/SailLower/diffuse/blue</path>	
+    <path>/sim/model/airwaveXtreme150/material/SailLower/transparency/alpha</path>
+    
+    <path>/sim/model/airwaveXtreme150/material/SailLowerStripe/diffuse/red</path>
+    <path>/sim/model/airwaveXtreme150/material/SailLowerStripe/diffuse/green</path>
+    <path>/sim/model/airwaveXtreme150/material/SailLowerStripe/diffuse/blue</path>	
+    <path>/sim/model/airwaveXtreme150/material/SailLowerStripe/transparency/alpha</path>
+
+    <path>/fdm/jsbsim/aero/max-glide-ratio</path>
+    <path>/fdm/jsbsim/inertia/pointmass-weight-lbs</path>
+    <path>/fdm/jsbsim/metrics/Sw-sqft</path>   
+
+    <path>/controls/flight/auto-coordination</path>
+
+    <path>/sim/panel/visibility</path>
+    <path>/sim/panel/path</path>
+    
+  </aircraft-data>
 
   <status>beta</status>
   <rating>
@@ -586,7 +659,6 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
     </binding>
    </key>
 
-
   </keyboard> 
  </input> 
  
@@ -612,8 +684,11 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
      <aero>
        <max-glide-ratio type="float">14.15</max-glide-ratio>
      </aero>
+     <inertia>
+      <pointmass-weight-lbs type="float">200.</pointmass-weight-lbs>
+     </inertia>
      <metrics>
-       <Sw-m2 type="float">40.</Sw-m2> 
+      <Sw-sqft type="float">154.0</Sw-sqft>
      </metrics>
      <fcs>
        <parachute-pos-norm type="double">0.</parachute-pos-norm>       
