@@ -1,3 +1,8 @@
+Changes August 2012 by D-NXKT:
+
+- make JSBSim-Version the default (airwaveXtreme150-set.xml)
+
+
 Changes July 2012 by D-NXKT:
 
 - Enable multiplayer (animations and variants but NOT for individual settings)

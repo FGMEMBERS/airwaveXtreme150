@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
-<PropertyList include="airwaveXtreme150-v1-nl-uiuc-set.xml">
+<PropertyList include="airwaveXtreme150-JSBSim-set.xml">
  <sim>
-  <description>Alias for airwaveXtreme150-v1-nl-uiuc.</description>
+  <description>Alias for airwaveXtreme150-JSBSim</description>
  </sim>
 </PropertyList>
