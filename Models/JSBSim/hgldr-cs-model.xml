@@ -12,14 +12,14 @@
    var rplayer = cmdarg();
    # Set up property aliases for animations.
 
-   rplayer.getNode("sim/model/airwaveXtreme150/kingpost", 1).
+   rplayer.getNode("sim/model/airwaveXtreme150/kingpost_mp", 1).
      alias(rplayer.getNode("sim/multiplay/generic/int[0]"));
-   rplayer.getNode("sim/model/airwaveXtreme150/single_surface", 1).
+   rplayer.getNode("sim/model/airwaveXtreme150/single_surface_mp", 1).
      alias(rplayer.getNode("sim/multiplay/generic/int[1]"));
-   rplayer.getNode("sim/model/airwaveXtreme150/wheels", 1).
+   rplayer.getNode("sim/model/airwaveXtreme150/wheels_mp", 1).
      alias(rplayer.getNode("sim/multiplay/generic/int[2]"));
-
-   rplayer.getNode("gear/gear[2]/wow", 1).
+   # rplayer.getNode("gear/gear[2]/wow", 1).
+   rplayer.getNode("sim/model/airwaveXtreme150/on_ground", 1).
      alias(rplayer.getNode("sim/multiplay/generic/int[3]"));
    rplayer.getNode("animation/running_leg_left", 1).
      alias(rplayer.getNode("sim/multiplay/generic/float[0]"));  
@@ -84,11 +84,13 @@
    livery_update.stop();
 
    # unalias
-   rplayer.getNode("sim/model/airwaveXtreme150/kingpost", 1).unalias();
-   rplayer.getNode("sim/model/airwaveXtreme150/single_surface", 1).unalias();
-   rplayer.getNode("sim/model/airwaveXtreme150/wheels", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/kingpost_mp", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/single_surface_mp", 1).unalias();
+   rplayer.getNode("sim/model/airwaveXtreme150/wheels_mp", 1).unalias();
 
-   rplayer.getNode("gear/gear[2]/wow", 1).unalias();
+   # rplayer.getNode("gear/gear[2]/wow", 1).unalias(); 
+   rplayer.getNode("sim/model/airwaveXtreme150/on_ground", 1).unalias(); 
+
    # rplayer.getNode("sim/current-view/view-number", 1).unalias();
 
    rplayer.getNode("animation/running_leg_left", 1).unalias();  
@@ -137,6 +139,7 @@
   <pitch-deg>15</pitch-deg>
  </offsets>
 
+
 <!-- __________________ Glider __________________ -->
 
  <animation>
@@ -145,7 +148,8 @@
     <expression>
      <product>
       <property>surface-positions/left-aileron-pos-norm</property>
-      <property>gear/gear[2]/wow</property>
+      <!-- <property>gear/gear[2]/wow</property> -->
+      <property>sim/model/airwaveXtreme150/on_ground</property>
       <value>-15</value>
       <value>1</value>
      </product>
@@ -169,7 +173,8 @@
      <table>
       <product>
        <property>surface-positions/elevator-pos-norm</property>
-       <property>gear/gear[2]/wow</property>
+       <!-- <property>gear/gear[2]/wow</property> -->
+       <property>sim/model/airwaveXtreme150/on_ground</property>
        <value>-1</value>      
       </product>
       <entry><ind>-1.0</ind> <dep>-40</dep></entry>
@@ -177,7 +182,6 @@
       <entry><ind>1.0</ind>  <dep>10</dep></entry>	       
      </table>
     </expression>
-
     <center>
       <x-m>1.536</x-m>
       <y-m>0.0</y-m>
@@ -196,7 +200,8 @@
     <expression>
      <product>
       <property>surface-positions/rudder-pos-norm</property>
-      <property>gear/gear[2]/wow</property>
+      <!-- <property>gear/gear[2]/wow</property> -->
+      <property>sim/model/airwaveXtreme150/on_ground</property>
       <value>-25</value>
       <value>1</value>
      </product>
@@ -830,7 +835,7 @@
    <object-name>UpperSideWireLeft</object-name> 
    <object-name>UpperSideWireRight</object-name>		     
    <condition>
-     <property>sim/model/airwaveXtreme150/kingpost</property>
+     <property>sim/model/airwaveXtreme150/kingpost_mp</property>
    </condition>
    <nopreview/>
  </animation>
@@ -843,7 +848,7 @@
    <object-name>WingLeftSingleSurf</object-name>
    <object-name>WingRightSingleSurf</object-name>
    <condition>
-     <property>sim/model/airwaveXtreme150/single_surface</property>
+     <property>sim/model/airwaveXtreme150/single_surface_mp</property>
    </condition>
    <nopreview/>
  </animation>
@@ -856,7 +861,7 @@
    <object-name>WingRightLowerStripe</object-name>
    <condition>
     <not>
-     <property>sim/model/airwaveXtreme150/single_surface</property>
+      <property>sim/model/airwaveXtreme150/single_surface_mp</property>
     </not>
    </condition>
  </animation>
@@ -869,7 +874,7 @@
    <object-name>WheelLeft</object-name>
    <object-name>WheelRight</object-name>
    <condition>
-     <property>sim/model/airwaveXtreme150/wheels</property>
+     <property>sim/model/airwaveXtreme150/wheels_mp</property>
    </condition>
    <nopreview/>
  </animation>

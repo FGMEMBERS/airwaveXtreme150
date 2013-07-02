@@ -17,6 +17,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
              Feb 18, 2012 D-NXKT, D_NXKT@yahoo.de
 	     June 10, 2012 D-NXKT, D_NXKT@yahoo.de
 	     July 14, 2012 D-NXKT
+	     July 2nd, 2013 D-NXKT
 ************************************************************************
 -->
 
@@ -27,10 +28,12 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
   <description>Airwave Xtreme 150 hang glider (JSBSim)</description>
 
   <author>Michael Selig, Captain Slug, D-NXKT</author>
-  <aircraft-version>July 2012</aircraft-version>
+  <aircraft-version>July 2013</aircraft-version>
   <flight-model>jsb</flight-model>
   <aero>Models/JSBSim/airwaveXtreme150-JSBSim</aero>
-  
+
+  <checklists include="airwaveXtreme150-JSBSim-checklists.xml"/>
+    
   <startup>
     <splash-texture>Aircraft/airwaveXtreme150/splash.png</splash-texture>
     <splash-title>Airwave Xtreme 150</splash-title>
@@ -153,7 +156,12 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
     <kingpost type="bool">0</kingpost>
     <single_surface type="bool">0</single_surface>
     <wheels type="bool">0</wheels>
-        
+    <on_ground type="bool">0</on_ground> 
+    
+    <kingpost_mp       alias="/sim/model/airwaveXtreme150/kingpost"/>        <!-- needed for multiplayer -->
+    <single_surface_mp alias="/sim/model/airwaveXtreme150/single_surface"/>  <!-- needed for multiplayer -->
+    <wheels_mp         alias="/sim/model/airwaveXtreme150/wheels"/>          <!-- needed for multiplayer --> 
+              
    </airwaveXtreme150>
 
   </model>
@@ -168,10 +176,11 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
     <float n="5" alias="/fdm/jsbsim/fcs/parachute-pos-norm"/>
     <float n="6" alias="/fdm/jsbsim/gear/unit[10]/wheel-speed-fps"/>
     <float n="7" alias="/fdm/jsbsim/gear/unit[11]/wheel-speed-fps"/>        
-    <int n="0" alias="/sim/model/airwaveXtreme150/kingpost"/>
-    <int n="1" alias="/sim/model/airwaveXtreme150/single_surface"/>
-    <int n="2" alias="/sim/model/airwaveXtreme150/wheels"/> 
-    <int n="3" alias="/gear/gear[2]/wow"/>
+    <int n="0" alias="/sim/model/airwaveXtreme150/kingpost_mp"/>
+    <int n="1" alias="/sim/model/airwaveXtreme150/single_surface_mp"/>
+    <int n="2" alias="/sim/model/airwaveXtreme150/wheels_mp"/> 
+    <!-- <int n="3" alias="/gear/gear[2]/wow"/> -->
+    <int n="3" alias="/sim/model/airwaveXtreme150/on_ground"/>
    </generic>
   </multiplay>
 
@@ -398,11 +407,11 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
    <title>Airwave Xtreme 150</title>
       <key>
         <name>9/PgUp</name>
-        <desc>Running forward / increase throttle</desc>
+        <desc>running forward / increase throttle</desc>
       </key>
       <key>
         <name>3/PgDn</name>    
-        <desc>walking backward / decrease throttle</desc>
+        <desc>running backward / decrease throttle</desc>
       </key>
       <key>
         <name>0/INSERT</name>
@@ -412,6 +421,11 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
         <name>ENTER</name>
         <desc>turn pilot right (on ground / no fdm function in air)</desc>
       </key>
+      <key>
+        <name>Arrow Keys</name>
+        <desc>move pilot around (see Checklist: Ground Handling)</desc>
+      </key>
+      
       <key>
         <name>g/G</name>
         <desc>legs into/out of harness</desc>
@@ -445,37 +459,22 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
         <name>}/{</name>
         <desc>deploy parachute / retract parachute</desc>
       </key>
+      <key>
+        <name>r</name>
+        <desc>recover (pick oneself up after a fall/crash)</desc>
+      </key>
 
       <line> </line>
       <line>Best flown with "Keel View" </line>
       <line> </line>
-
+      <line>Important:</line>
+      <line>Detailed description of ground handling in "Help - Aircraft Checklists"</line> 
+      <line> </line>       
       <line>Choose predefined variant "ZeroVariantForAutosave" to enable</line>
-      <line>   autosave of individual settings.</line>
- 
-      <line>Multiplayer is enabled for predefined variants only </line>
-      <line>   (except "ZeroVariantForAutosave").</line>
-
+      <line>   autosave of individual settings.</line> 
+      <line>Individual colours are not transmitted over multiplayer</line>
       <line> </line>      
  
-      <line>Important for ground handling:</line>
-      <line>The running force (forward) is set to 0 by only once pressing</line> 
-      <line>   3/PgDn (backward) and vice versa.</line>
-      <line>   Once in air the force is also set to 0.</line>
-      <line>Breaks ("b") are usable.</line> 
-      <line>The parking-brake is set automatically after inserting the legs.</line>
-      <line> </line>
-      
-      <line>Take-off:</line>
-      <line>From mountain: Run forward</line>
-      <line>From flat terrain: "s" + increase throttle or Ctrl-U</line>
-      <line> </line>
-      <line>Touch down:</line>
-      <line>1. erect pilot</line>
-      <line>2. wait until running animation starts (altitude less than 10ft)</line>
-      <line>3. reduce speed to trim speed while keeping altitude</line>
-      <line>4. push A-frame (pull joystick/mouse)</line>  
-      <line> </line> 
       <line>Note: </line>             
       <line>This hang glider is a conversion of the LaRCsim/UIUC fdm.</line>
       <line>Flying (under positiv g-force conditions) is quite realistic. </line> 
@@ -487,7 +486,6 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
       <line>More useful information about fdm:</line>
       <line>/Aircraft/UIUC/airwaveXtreme150-v1-nl/README.airwaveXtreme150.html</line>   
       <line> </line> 
-                  
   </help>
 
   <aircraft-data>
@@ -646,6 +644,19 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
     </binding>
    </key>
 
+   <key n="269">
+    <name>Enter</name>
+    <desc>Turning moment right</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>property-adjust</command>
+     <property>/fdm/jsbsim/fcs/turning-moment-norm</property>
+     <step type="double">0.05</step>
+  	  <min>0.</min>
+  	  <max>1.</max>
+    </binding>
+   </key>
+
    <key n="364">
     <name>Insert</name>
     <desc>Turning moment left</desc>
@@ -653,6 +664,67 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
     <binding>
      <command>property-adjust</command>
      <property>/fdm/jsbsim/fcs/turning-moment-norm</property>
+     <step type="double">-0.05</step>
+  	  <min>-1.</min>
+  	  <max>0.</max>
+    </binding>
+   </key>
+
+   <key n="114">
+     <name>r</name>
+     <desc>recover</desc>
+     <binding>
+       <command>nasal</command>
+       <script>
+         setprop("orientation/roll-deg", 0); 
+         setprop("orientation/pitch-deg", 0);
+      </script>
+     </binding>
+   </key>
+
+   <key n="356">
+     <name>Left</name>
+     <desc>move left</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>property-adjust</command>
+     <property>animation/side</property>
+     <step type="double">-0.05</step>
+  	  <min>-1.</min>
+  	  <max>0.</max>
+    </binding>
+   </key>
+   <key n="358">
+     <name>Right</name>
+     <desc>move right</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>property-adjust</command>
+     <property>animation/side</property>
+     <step type="double">0.05</step>
+  	  <min>0.</min>
+  	  <max>1.</max>
+    </binding>
+   </key>
+   <key n="357">
+     <name>Up</name>
+     <desc>move forward</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>property-adjust</command>
+     <property>animation/ahead</property>
+     <step type="double">0.05</step>
+  	  <min>0.</min>
+  	  <max>1.</max>
+    </binding>
+   </key>
+   <key n="359">
+     <name>Down</name>
+     <desc>move backward</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>property-adjust</command>
+     <property>animation/ahead</property>
      <step type="double">-0.05</step>
   	  <min>-1.</min>
   	  <max>0.</max>
@@ -709,6 +781,10 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
      <antiskid      type="bool">false</antiskid>
    </gear> 
  </controls> 
- 
+
+ <animation>
+   <side type="float">0.</side>
+   <ahead type="float">0.</ahead>
+ </animation>
    
 </PropertyList>

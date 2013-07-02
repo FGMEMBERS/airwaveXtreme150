@@ -16,16 +16,17 @@ var RunningAnimation = func {
 #
   var gear_pos_norm   = getprop("gear/gear[1]/position-norm");  	 # gear in-out (0-1)
   var prone_pos_norm  = getprop("controls/flight/elevator-trim");	 # inclination (-0.05 :=  65deg erected
-  									 #		+0.05 := -25deg prone
+  var prone_pos = prone_pos_norm;
+    									 #		+0.05 := -25deg prone
   if ( prone_pos_norm < 0.0 ) 
   	  {
-  	    if ( prone_pos_norm < -0.05 ) { var prone_pos_norm = -0.05 } # clamp to -0.05 (-25deg)
-  	    var prone_pos_deg = prone_pos_norm * 65. / 0.05;
+  	    if ( prone_pos_norm < -0.05 ) { var prone_pos = -0.05 } # clamp to -0.05 (-25deg)
+  	    var prone_pos_deg = prone_pos * 65. / 0.05;
   	  }
   if ( prone_pos_norm >=  0.0 )
   	  {
-  	    if ( prone_pos_norm >  0.05 ) { var prone_pos_norm =  0.05}  # clamp to 0.05
-  	    var prone_pos_deg = prone_pos_norm * 25. / 0.05;
+  	    if ( prone_pos_norm >  0.05 ) { var prone_pos =  0.05}  # clamp to 0.05
+  	    var prone_pos_deg = prone_pos * 25. / 0.05;
   	  }
 
   var delta_pos_gear_prone_deg  = ( 90. + prone_pos_deg );
@@ -84,6 +85,7 @@ var RunningAnimation = func {
   { 
     setprop("animation/running_leg",30);	# 30 -> deflection lower leg is 0
     setprop("animation/running_leg_sign",0);
+    var groundspeed = 0.;
   }
 
   var leg_pos_left  = legs_pos_gear + legs_pos_run * gear_pos_norm;
@@ -94,9 +96,95 @@ var RunningAnimation = func {
   setprop("animation/running_leg_right",leg_pos_right);
     	    
   settimer(RunningAnimation,0);
+
+#
+# -------------------------------------------------------------
+#             groundhandling/walking         Status: 30.06.2013
+# -------------------------------------------------------------
+#  
+  var wow0 = getprop("gear/gear[0]/wow");
+  var wow1 = getprop("gear/gear[1]/wow");
+  var wow2 = getprop("gear/gear[2]/wow");
+  var wow3 = getprop("gear/gear[3]/wow");
+  if ( wow0 or wow1 or wow2 or wow3 ){var on_ground = 1;}
+  else                               {var on_ground = 0;}
+  setprop("sim/model/airwaveXtreme150/on_ground",on_ground);
+
+  if ( ( on_ground > 0 ) and ( prone_pos_norm < 0.05 ) ){
+     Walking();
+   }
+   else{
+      setprop("animation/ahead",0.);
+      setprop("animation/side",0.);
+   }
+#
+# -------------------------------------------------------------
+
 }
 
 # Start the running animation ASAP
 RunningAnimation();
 
+
+#########################################################################
+#########################################################################
+#
+# -------------------------------------------------------------
+#                              walking 
+# -------------------------------------------------------------
+#
+var Walking = func(){
+     
+  var heading_deg = getprop("orientation/heading-deg"); 
+
+  # --- enforce turning ---
+  var pitch_deg   = getprop("orientation/pitch-deg"); 
+  var roll_deg    = getprop("orientation/roll-deg");
+
+  var step_deg = 1.;
+  
+  var turning = getprop("fdm/jsbsim/fcs/turning-moment-norm");
+
+  if(turning != 0.){
+    
+    if ( turning < 0. ) step_deg = - step_deg ;
+    var heading_deg = heading_deg + step_deg ;
+
+    setprop("orientation/heading-deg",heading_deg); 
+    setprop("fdm/jsbsim/fcs/turning-moment-norm",0);
+
+    var delta_heading_rad = step_deg * 0.0174532;
+    var sin_delta_heading = math.sin( delta_heading_rad );
+    var cos_delta_heading = math.cos( delta_heading_rad );
+
+    var pitch = pitch_deg * cos_delta_heading - roll_deg * sin_delta_heading;
+    var roll  = pitch_deg * sin_delta_heading + roll_deg * cos_delta_heading;
+    setprop("orientation/pitch-deg",pitch);
+    setprop("orientation/roll-deg",roll); 
+  
+  }
+  
+  # --- enforce walking ---
+  var heading_rad = heading_deg * 0.0174532;
+  var sin_heading = math.sin( heading_rad );
+  var cos_heading = math.cos( heading_rad );
+
+  var step_size = 0.0000005;
+  
+  var side    = getprop("animation/side");
+  var step_side_deg = side * step_size;
+
+  var ahead  = getprop("animation/ahead");
+  var step_ahead_deg = ahead * step_size;
+
+  var longitude_deg = getprop("position/longitude-deg");
+  var latitude_deg  = getprop("position/latitude-deg"); 
+
+  var latitude_deg  = latitude_deg  + step_ahead_deg * cos_heading - step_side_deg * sin_heading;
+  var longitude_deg = longitude_deg + step_ahead_deg * sin_heading + step_side_deg * cos_heading;
+         
+  setprop("position/longitude-deg",longitude_deg); 
+  setprop("position/latitude-deg" ,latitude_deg);
+
+}
 

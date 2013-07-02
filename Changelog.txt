@@ -1,3 +1,12 @@
+Changes July 2013 by D-NXKT:
+
+- improved ground handling: walking mode 
+- recover after crash
+- Change "on ground"-variable in multiplayer 
+  (modification is NOT downward compatible)
+- transmit properties kingpost, single surface and wheels over multiplayer
+
+
 Changes August 2012 by D-NXKT:
 
 - make JSBSim-Version the default (airwaveXtreme150-set.xml)
