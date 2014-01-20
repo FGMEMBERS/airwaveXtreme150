@@ -393,7 +393,6 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
       <label>Toggle Pilot Animation Rotate + Yaw</label>
        <binding>
         <command>property-toggle</command>
-        <!-- <property>sim/auto-coordination</property> -->
         <property>controls/flight/auto-coordination</property>
         <value>0</value> 
        </binding>
