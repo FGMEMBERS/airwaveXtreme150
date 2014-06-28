@@ -13,8 +13,8 @@
   </channel>
 
   <channel name="RunningOnGround">        
-    <fcs_function>
-      <function name="systems/RunningForceOnGround"> 
+    <fcs_function name="systems/RunningForceOnGround">
+      <function> 
   	<product>
           <p>fcs/running-force-norm</p>	  
           <p>gear/gear-pos-norm</p>
@@ -26,8 +26,8 @@
   </channel>
   
   <channel name="TurningOnGround">
-    <fcs_function>
-      <function name="systems/TurningMomentOnGround">
+    <fcs_function name="systems/TurningMomentOnGround">
+      <function>
   	<product>
           <p>fcs/rudder-cmd-norm</p>
           <p>gear/gear-pos-norm</p>
@@ -50,7 +50,7 @@
   </channel>
 
   <channel name="ParkingBrake">
-    <switch name="systems/ParkingBrake">
+    <switch name="systems/ParkingBrake1">
       <default value="/controls/gear/brake-parking"/>
       <test value="0.">
   	fcs/running-force-norm ne 0.
@@ -58,7 +58,7 @@
       <output>/controls/gear/brake-parking</output> 
     </switch>	      
 
-    <switch name="systems/ParkingBrake">
+    <switch name="systems/ParkingBrake2">
       <default value="/controls/gear/brake-parking"/>
       <test value="1.">
   	/gear/gear[1]/position-norm eq 0.
@@ -69,8 +69,8 @@
 
   <channel name="AlphaBetaDueToPilotInput">
     
-    <fcs_function>
-      <function name="aero/beta-ground-rudder-deg">
+    <fcs_function name="aero/beta-ground-rudder-deg">
+      <function>
         <description>beta due to rudder input on ground</description>
          <product>
 	   <property>/controls/flight/rudder</property>
@@ -86,8 +86,8 @@
       </test> 
     </switch>	      
 
-    <fcs_function>
-      <function name="aero/beta-eff-deg">
+    <fcs_function name="aero/beta-eff-deg">
+      <function>
 	<sum>
           <property>aero/beta-deg</property>
           <property>aero/beta-onground-deg</property>
@@ -95,8 +95,8 @@
       </function>
     </fcs_function>
 
-    <fcs_function>
-      <function name="aero/beta-eff-rad">
+    <fcs_function name="aero/beta-eff-rad">
+      <function>
         <description>beta-eff-deg to beta-eff-rad</description>
          <product>
 	   <property>aero/beta-eff-deg</property>
@@ -105,8 +105,8 @@
       </function>
     </fcs_function>
 
-    <fcs_function>
-      <function name="aero/alpha-ground-elevator-deg">
+    <fcs_function name="aero/alpha-ground-elevator-deg">
+      <function>
         <description>alpha due to elevator input on ground</description>
         <product>
 	  <property>/controls/flight/elevator</property>
@@ -125,14 +125,14 @@
       </test> 
     </switch>	      
 
-    <fcs_function>
-      <function name="aero/alpha-eff-deg">
+    <fcs_function name="aero/alpha-eff-deg">
+      <function>
 	<sum>
           <property>aero/alpha-deg</property>
           <property>aero/alpha-onground-deg</property>
         </sum>
       </function>
     </fcs_function>
-    
   </channel>
+  
 </system>

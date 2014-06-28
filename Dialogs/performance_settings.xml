@@ -61,7 +61,7 @@
         <property>/fdm/jsbsim/aero/max-glide-ratio</property>
         <color>
           <red>1.</red>
-          <green>0.</green>
+          <green>1.</green>
           <blue>0.</blue>
         </color>
       </text>
@@ -112,7 +112,7 @@
             <property>/fdm/jsbsim/inertia/empty-weight-lbs</property>
             <color>
               <red>0.</red>
-              <green>0.</green>
+              <green>1.</green>
               <blue>1.</blue>
             </color>
           </text>
@@ -128,7 +128,7 @@
             <property>/fdm/jsbsim/inertia/empty-weight-kg</property>
             <color>
               <red>0.</red>
-              <green>0.</green>
+              <green>1.</green>
               <blue>1.</blue>
             </color>
           </text>
@@ -179,7 +179,7 @@
           <property>/fdm/jsbsim/inertia/pointmass-weight-lbs</property>
           <color>
             <red>0.</red>
-            <green>0.</green>
+            <green>1.</green>
             <blue>1.</blue>
           </color>
         </text>
@@ -195,7 +195,7 @@
           <property>/fdm/jsbsim/inertia/pointmass-weight-kg</property>
           <color>
             <red>0.</red>
-            <green>0.</green>
+            <green>1.</green>
             <blue>1.</blue>
           </color>
         </text>
@@ -272,7 +272,7 @@
           <property>/fdm/jsbsim/inertia/weight-lbs</property>
           <color>
             <red>0.</red>
-            <green>0.</green>
+            <green>1.</green>
             <blue>1.</blue>
           </color>
         </text>
@@ -288,7 +288,7 @@
           <property>/fdm/jsbsim/inertia/weight-kg</property>
           <color>
             <red>0.</red>
-            <green>0.</green>
+            <green>1.</green>
             <blue>1.</blue>
           </color>
         </text>

@@ -1,7 +1,7 @@
 var ViewAnimation = func {
 #
 # ---------------------------------------------------------------------------------
-#                        View Animation                         Status: 09.06.2012
+#                        View and Hitch Animation               Status: 20.03.2014
 # ---------------------------------------------------------------------------------
 #
 #
@@ -36,100 +36,163 @@ var ViewAnimation = func {
 
 var view_number = getprop("sim/current-view/view-number");
 var on_ground   = getprop("gear/gear[2]/wow");
-var rotation = 0;          # help variable (0:= do not run rotation routine / 1:= run rotation routine
-var rotation_harness = 0;  # help variable (0:= do not rotate harness / 1:= rotate harness
+#var rotation = 0;          # help variable (0:= do not run rotation routine / 1:= run rotation routine
+#var rotation_harness = 0;  # help variable (0:= do not rotate harness / 1:= rotate harness
 
-if ( view_number == 0 or view_number == 10 or view_number == 11 ) { 
+var mode = ["dummy","dummy","dummy"];
+var device=["dummy","dummy","dummy"];
+var hitch= ["dummy","dummy","dummy"];
+
+var n_loop = 0;
+
+if ( view_number == 0 or view_number == 10 or view_number == 11 ) {
+  n_loop = n_loop + 1;
+  mode[n_loop-1] = "view_animation";
+  }
+if ( getprop("sim/hitches/aerotow/open") == 0 ) {
+  n_loop = n_loop + 1;
+  mode[n_loop-1] = "hitch_animation";
+  device[n_loop-1] = "aerotow";
+  hitch[n_loop-1] = getprop("sim/hitches/aerotow/force_name_jsbsim");
+  }
+if ( getprop("sim/hitches/winch/open") == 0 ) {
+  n_loop = n_loop + 1;
+  mode[n_loop-1] = "hitch_animation";
+  device[n_loop-1] = "winch";
+  hitch[n_loop-1] = getprop("sim/hitches/winch/force_name_jsbsim");
+  }
+  
+for (var n=0; n < n_loop; n = n+1) {   
+
+  var rotation = 0;          # help variable (0:= do not run rotation routine / 1:= run rotation routine
+  var rotation_harness = 0;  # help variable (0:= do not rotate harness / 1:= rotate harness
+
+  if( mode[n] == "view_animation") {  
+    if ( view_number == 0 ) {
+      # Point to rotate = X = (x,y,z) (Eyes; FDM-system)
+      var x = -0.5;
+      var y = 0;
+      var z = -0.05;
+      if ( on_ground == 0 ) { var rotation = 1; };
+      var rotation_harness = 1;
+    }
+    else if ( view_number == 11 ) {
+      # Point to rotate = X = (x,y,z) (Harness View; FDM-system)
+      var x = 1.14;
+      var y = 0.;
+      var z = 0.;
+      if ( on_ground == 0 ) { var rotation = 1; };
+      var rotation_harness = 1;
+    }
+    else if ( view_number == 10 ) {
+      # Point to rotate = X = (x,y,z) (Left Wingtip View; FDM-system)
+      var x = 1.;
+      var y = -5.15;
+      var z = 0.25;
+      if ( on_ground == 1 ) { var rotation = 1; };
+      var rotation_harness = 0;
+    }
+  } # end mode view_animation
+  else if ( mode[n] == "hitch_animation") {
+    # Point to rotate = X = (x,y,z) (hitch; FDM-system)
+    if ( hitch[n] == "belly" ) {
+      var x = 0.0;
+      var y =  0.;
+      var z = -0.39;
+      if ( on_ground == 0 ) rotation = 1;
+      rotation_harness = 1;
+    } 
+    else if ( hitch[n] == "chest" ) {
+      var x =  -0.25;
+      var y =  0.;
+      var z = -0.3;
+      if ( on_ground == 0 ) rotation = 1;
+      rotation_harness = 1;
+    }
+    else if ( hitch[n] == "drop" ) {
+      var x = 0.;
+      var y = 0.;
+      var z = 0.8;
+      if ( on_ground == 1 ) rotation = 1;
+      rotation_harness = 0;
+    }    
+    else {
+      var x = 0.;
+      var y = 0.;
+      var z = 0.;
+    }
+#    if ( on_ground == 0 ) rotation = 1;
+#    rotation_harness = 1;
+  } # end mode hitch_animation
+
+  if (n == 0 ) {
+  
+    # Center of rotation = Xr = (xr,yr,zr) (FDM-system)
+    var xr = 0.023;
+    var yr = 0.;
+    var zr = 0.728;
+   
+    # Center of rotation harness (prone) = Xrh = (xrh,yrh,zrh) (FDM-system)
+    var xrh = 0.154;
+    var yrh = 0.0;
+    var zrh = -0.040;
  
-  
-  # Center of rotation = Xr = (xr,yr,zr) (FDM-system)
-  var xr = 0.023;
-  var yr = 0.;
-  var zr = 0.728;
+    # defaults are necessary to avoid nasal runtime errors
+    var x_new = x;   
+    var y_new = y;
+    var z_new = z;
+    var roll_zyx    = 0.;    
+    var pitch_zyx   = 0.; 
+    var heading_zyx = 0.;
+    #----------------------------------------------------------------------------------
    
-  # Center of rotation harness (prone) = Xrh = (xrh,yrh,zrh) (FDM-system)
-  var xrh = 0.154;
-  var yrh = 0.0;
-  var zrh = -0.040;
+    # get variables
+    var aileron       = getprop("controls/flight/aileron");
+    var elevator      = getprop("controls/flight/elevator");
+    var rudder        = getprop("controls/flight/rudder");
+    var elevator_trim = getprop("controls/flight/elevator-trim");
+
+
+    # Deflections
+    var fak = math.pi / 180.;
+    var fakh = fak;
+    if ( on_ground == 1 ) { var fak = -1 * fak};  # switch reference system
+
+    var roll_offset_deg = aileron * 15.;
+    var sin_alpha = math.sin(aileron * 15. * fak);
+    var cos_alpha = math.cos(aileron * 15. * fak);
+
+    if(elevator < 0 ){                            # due to interpolation in animation
+      var pitch_offset_deg = elevator * 10.;                                
+      var sin_beta  = math.sin(elevator * 10. * fak);
+      var cos_beta  = math.cos(elevator * 10. * fak);
+    }
+    else{
+      var pitch_offset_deg = elevator * 40.;
+      var sin_beta  = math.sin(elevator * 40.* fak);
+      var cos_beta  = math.cos(elevator * 40.* fak);
+    }
+
+    var heading_offset_deg = rudder * 25.;
+    var sin_gamma = math.sin(rudder * 25.* fak);
+    var cos_gamma = math.cos(rudder * 25.* fak);
+
+    if(elevator_trim < -0.05 ) { var elevator_trim = -0.05 }
+    if(elevator_trim >  0.05 ) { var elevator_trim =  0.05 }
+
+    if(elevator_trim < 0 ){                       # due to interpolation in animation -0.05 65 / 0 -10 / 0.05 -25
+      var pitch_prone_deg = - elevator_trim * 1500. - 10.;
+      var sin_theta = math.sin(- elevator_trim * 1500. * fakh - 10. * fakh);
+      var cos_theta = math.cos(- elevator_trim * 1500. * fakh - 10. * fakh);
+    }
+    else{
+      var pitch_prone_deg = - elevator_trim * 300. - 10.;
+      var sin_theta = math.sin(- elevator_trim * 300. * fakh - 10. * fakh);
+      var cos_theta = math.cos(- elevator_trim * 300. * fakh - 10. * fakh);
+    }
   
-  if ( view_number == 0 ) {
-    # Point to rotate = X = (x,y,z) (Eyes; FDM-system)
-    var x = -0.5;
-    var y = 0;
-    var z = -0.05;
-    if ( on_ground == 0 ) { var rotation = 1; };
-    var rotation_harness = 1;
-  }
-  else if ( view_number == 11 ) {
-    # Point to rotate = X = (x,y,z) (Harness View; FDM-system)
-    var x = 1.14;
-    var y = 0.;
-    var z = 0.;
-    if ( on_ground == 0 ) { var rotation = 1; };
-    var rotation_harness = 1;
-  }
-  else if ( view_number == 10 ) {
-    # Point to rotate = X = (x,y,z) (Left Wingtip View; FDM-system)
-    var x = 1.;
-    var y = -5.15;
-    var z = 0.25;
-    if ( on_ground == 1 ) { var rotation = 1; };
-    var rotation_harness = 0;
-  }
-
-  # defaults are necessary to avoid nasal runtime errors
-  var x_new = x;   
-  var y_new = y;
-  var z_new = z;
-  var roll_zyx    = 0.;    
-  var pitch_zyx   = 0.; 
-  var heading_zyx = 0.;
-#----------------------------------------------------------------------------------
-   
-  # get variables
-  var aileron       = getprop("controls/flight/aileron");
-  var elevator      = getprop("controls/flight/elevator");
-  var rudder        = getprop("controls/flight/rudder");
-  var elevator_trim = getprop("controls/flight/elevator-trim");
-
-
-  # Deflections
-  var fak = math.pi / 180.;
-  var fakh = fak;
-  if ( on_ground == 1 ) { var fak = -1 * fak};  # switch reference system
-
-  var roll_offset_deg = aileron * 15.;
-  var sin_alpha = math.sin(aileron * 15. * fak);
-  var cos_alpha = math.cos(aileron * 15. * fak);
-
-  if(elevator < 0 ){                            # due to interpolation in animation
-    var pitch_offset_deg = elevator * 10.;                                
-    var sin_beta  = math.sin(elevator * 10. * fak);
-    var cos_beta  = math.cos(elevator * 10. * fak);
-  }
-  else{
-    var pitch_offset_deg = elevator * 40.;
-    var sin_beta  = math.sin(elevator * 40.* fak);
-    var cos_beta  = math.cos(elevator * 40.* fak);
-  }
-
-  var heading_offset_deg = rudder * 25.;
-  var sin_gamma = math.sin(rudder * 25.* fak);
-  var cos_gamma = math.cos(rudder * 25.* fak);
-
-  if(elevator_trim < -0.05 ) { var elevator_trim = -0.05 }
-  if(elevator_trim >  0.05 ) { var elevator_trim =  0.05 }
-
-  if(elevator_trim < 0 ){                       # due to interpolation in animation -0.05 65 / 0 -10 / 0.05 -25
-    var pitch_prone_deg = - elevator_trim * 1500. - 10.;
-    var sin_theta = math.sin(- elevator_trim * 1500. * fakh - 10. * fakh);
-    var cos_theta = math.cos(- elevator_trim * 1500. * fakh - 10. * fakh);
-  }
-  else{
-    var pitch_prone_deg = - elevator_trim * 300. - 10.;
-    var sin_theta = math.sin(- elevator_trim * 300. * fakh - 10. * fakh);
-    var cos_theta = math.cos(- elevator_trim * 300. * fakh - 10. * fakh);
-  }
+  }  # end n=0
+  
   #-------------------------------   prone   ----------------------------
   #
   if ( rotation_harness == 1 ) {         # pilot / harness view
@@ -283,28 +346,39 @@ if ( view_number == 0 or view_number == 10 or view_number == 11 ) {
     var y_new = yr + y_zyx;
     var z_new = zr + z_zyx;
   }
-  # View-System  
-  setprop("sim/current-view/x-offset-m",y_new);      
-  setprop("sim/current-view/y-offset-m",z_new);
-  setprop("sim/current-view/z-offset-m",x_new);
   
-  if ( view_number == 11 ) {
-    # Harness View
-    setprop("sim/current-view/pitch-offset-deg",pitch_zyx);      
-    setprop("sim/current-view/roll-offset-deg",-roll_zyx);
-    setprop("sim/current-view/heading-offset-deg",heading_zyx); 
+  if( mode[n] == "view_animation") {
+    
+    # View-System  
+    setprop("sim/current-view/x-offset-m",y_new);      
+    setprop("sim/current-view/y-offset-m",z_new);
+    setprop("sim/current-view/z-offset-m",x_new);
+  
+    if ( view_number == 11 ) {
+      # Harness View
+      setprop("sim/current-view/pitch-offset-deg",pitch_zyx);      
+      setprop("sim/current-view/roll-offset-deg",-roll_zyx);
+      setprop("sim/current-view/heading-offset-deg",heading_zyx); 
+    }
+  
+    if ( view_number == 10 ) {
+      # Left Wingtip View
+      var pitch_xyzq = -pitch_zyx - 8 ;
+      var heading_xyzq = -heading_zyx - 75 ;
+      setprop("sim/current-view/pitch-offset-deg",-roll_zyx);      
+      setprop("sim/current-view/roll-offset-deg",pitch_xyzq);
+     setprop("sim/current-view/heading-offset-deg",heading_xyzq); 
+    }
   }
+  if ( mode[n] == "hitch_animation") {
+    #print("device ",device[n]);
+    setprop("sim/hitches/" ~ device[n] ~ "/local-pos-x",-x_new);
+    setprop("sim/hitches/" ~ device[n] ~ "/local-pos-y",-y_new);
+    setprop("sim/hitches/" ~ device[n] ~ "/local-pos-z",z_new);
+  } # end mode hitch_animation
   
-  if ( view_number == 10 ) {
-    # Left Wingtip View
-    var pitch_xyzq = -pitch_zyx - 8 ;
-    var heading_xyzq = -heading_zyx - 75 ;
-    setprop("sim/current-view/pitch-offset-deg",-roll_zyx);      
-    setprop("sim/current-view/roll-offset-deg",pitch_xyzq);
-    setprop("sim/current-view/heading-offset-deg",heading_xyzq); 
-  }
-  
-}		  
+}  # end loop
+		  
   	settimer(ViewAnimation,0);
 }  
 # Start ViewAnimation ASAP

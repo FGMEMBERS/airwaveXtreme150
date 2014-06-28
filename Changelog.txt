@@ -1,10 +1,25 @@
+
+Changes June 2014 by D-NXKT:
+
+- improved deep stall behaviour (pitch oscillation near stall)
+- enable tumble
+- winch and aerotow support with animated towropes and GUIs
+- 3 different hooks (chest, belly and drop)
+- step towing 
+- improved parachute animation (taking flow direction into account; airspeed dependent deployment time)
+- corrected kingpost contact point position
+- tweak colours in "Performance Settings" dialog
+- fix initialization bug in running.nas ("Reset" works now w/o a nasal error)
+- fix unwanted JSBSim-messages in console 
+
+
 Changes July 2013 by D-NXKT:
 
 - improved ground handling: walking mode 
 - recover after crash
 - Change "on ground"-variable in multiplayer 
   (modification is NOT downward compatible)
-- transmit properties kingpost, single surface and wheels over multiplayer
+- transmit properties kingpost, single-surface and wheels over multiplayer
 
 
 Changes August 2012 by D-NXKT:

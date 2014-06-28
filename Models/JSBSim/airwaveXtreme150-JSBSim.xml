@@ -10,9 +10,10 @@ href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
     <author> D-NXKT </author>
     <email> d_nxkt@yahoo.de </email>
     <filecreationdate> 2012-06-10 </filecreationdate>
-    <version> $Version 1.0 $ </version>
+    <version> $Version 1.1 $ </version>
     <description> Models a hang glider (conversion from UIUC-FDM) </description>
-    <note> some kind of remarks</note>
+    <note> v1.0: conversion from UIUC</note>
+    <note> v1.1: enable tumbling, winch, aerotow</note>
     <limitation> realistic only for positive g-forces</limitation>
     <documentation>
        realistic glide ratio between 9 and 15 (novice HG - high performance HG) 
@@ -112,7 +113,6 @@ href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
       <retractable>1</retractable>
     </contact> 
 
-  
     <contact name="LEFT_MAIN" type="BOGEY">
       <location unit="FT">
         <x>1.85</x>
@@ -302,18 +302,21 @@ href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
       <function>
         <product>
 	  <p>aero/qbar-psf</p>
-          <p>fcs/parachute-pos-norm</p>
+	  <pow>
+            <p>fcs/parachute-pos-norm</p>
+	    <v>4</v>
+	  </pow>
 	  <v>2.45</v>  <!-- Full drag coefficient 2.45 -->
 	  <v>344.4</v> <!-- Full parachute area 32m^2-->
 	</product>
       </function>
-	  
+
       <location unit="M">
-        <x>2.5</x>
+        <x>0.4</x>
         <y>0.0</y>
-        <z>-.1</z>
+        <z>0.6</z>
       </location>
-      
+  
       <direction>
         <x>-1.0</x>
         <y>0.0</y>
@@ -334,6 +337,46 @@ href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
         <z>0.0</z>
       </direction>
     </force>  
+
+    <!-- external forces for winch start, aerotowing and dropping -->        
+    <force name="chest" frame="BODY" unit="LBS" >
+      <location unit="M">
+        <x>-0.25</x>  
+        <y> 0.0</y>
+        <z>-0.3</z>
+      </location>
+      <direction>
+        <x>0.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+      </direction>
+    </force>
+
+    <force name="belly" frame="BODY" unit="LBS" >
+      <location unit="M">
+        <x> 0.</x>  
+        <y> 0.0</y>
+        <z>-0.39</z>
+      </location>
+      <direction>
+        <x>0.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+      </direction>
+    </force>
+
+    <force name="drop" frame="BODY" unit="LBS" >
+      <location unit="M">
+        <x> 0.2</x>  
+        <y> 0.0</y>
+        <z> 0.6</z>
+      </location>
+      <direction>
+        <x>0.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+      </direction>
+    </force>
 	
   </external_reactions>
 
@@ -456,7 +499,7 @@ href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
     </channel>
 
     <channel name="Parachute">
-      <kinematic name="Parachute Deployment Control">
+      <kinematic name="fcs/parachute-deployment-control">
         <input>/controls/engines/engine/magnetos</input>
         <traverse>
           <setting>
@@ -468,9 +511,26 @@ href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
             <time>2</time>
           </setting>
         </traverse>
-        <output>fcs/parachute-pos-norm</output>
+        <!-- <output>fcs/parachute-pos-norm</output> -->
       </kinematic>
+      
+      <fcs_function name="fcs/parachute-pos-norm">
+        <function>
+          <description>velocity dependent deployment time</description>
+          <pow>
+	    <property>fcs/parachute-deployment-control</property>
+	    <quotient>
+	      <value>40.</value>
+              <property>velocities/vtrue-fps</property>
+            </quotient>
+   	  </pow>
+        </function>
+	<clipto>
+	  <max>1</max>
+	</clipto>
+      </fcs_function>   
     </channel>
+    
   </flight_control>
 
   <aerodynamics>
@@ -563,6 +623,22 @@ href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
                 170.000000    0.283500    0.189000    0.094500    0.000000   -0.093000   -0.186000   -0.279000  -0.372000   -0.465000   -0.558000   -0.615000   -0.600000   -0.585000   -0.570000   -0.555000
                 175.000000    0.598500    0.504000    0.409500    0.315000    0.220500    0.126000    0.031500  -0.062000   -0.155000   -0.248000   -0.341000   -0.434000   -0.527000   -0.620000   -0.605000
                 180.000000    0.594000    0.606000    0.618000    0.630000    0.535500    0.441000    0.346500   0.252000    0.157500    0.063000   -0.031000   -0.124000   -0.217000   -0.310000   -0.403000
+            </tableData>
+          </table>
+        </product>
+      </function>
+
+      <function name="aero/coefficient/CL_stall_correction">
+        <description>Lift_at_zero_lift</description>
+        <product>
+          <property>aero/qbar-psf</property>
+          <property>metrics/Sw-sqft</property>
+          <table>	    
+            <independentVar lookup="row">aero/alpha-eff-deg</independentVar>
+            <tableData>
+               10.   0.
+	       12.  -0.2  <!-- generates wanted pitch oscillation near stall (see also "Pitch") -->
+	       30.   0.
             </tableData>
           </table>
         </product>
@@ -873,7 +949,40 @@ href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
           <property>metrics/cbarw-ft</property>
           <property>aero/ci2vel</property> 
           <property>velocities/q-aero-rad_sec</property>
-          <value>-5.2</value>
+          <value>-3.2</value> <!-- UIUC -5.2 -->
+        </product>
+      </function>
+
+      <function name="aero/coefficient/Cm_stall_empirical">
+        <description>Pitch_moment_modification_for_stall_and_tumbling</description>
+        <product>
+          <property>aero/qbar-psf</property>
+          <property>metrics/Sw-sqft</property>
+          <property>metrics/cbarw-ft</property>
+          <table>
+            <independentVar lookup="row">aero/alpha-eff-deg</independentVar>
+            <tableData>
+              -180.    0.
+	      -150.   -0.8
+	       -90.   -0.9
+	       -60.   -0.8
+	       -15.    0.
+	        10.    0.
+	        12.   -0.4  <!-- generates wanted pitch oscillation near stall (see also "Lift") -->
+	        90.   -0.9
+	       150.   -0.8
+	       180.    0.
+            </tableData>
+          </table>
+          <table>
+	    <!-- switch off for upright pilot = original UIUC stall behaviour (needed for pronounced landing flares) -->
+            <independentVar lookup="row">/controls/flight/elevator-trim</independentVar>
+            <tableData>
+              -0.05 0.
+	       0.   1.
+	       0.05 1.
+            </tableData>
+          </table>
         </product>
       </function>
 

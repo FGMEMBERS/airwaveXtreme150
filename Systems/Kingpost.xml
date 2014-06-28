@@ -2,9 +2,8 @@
 
 <system name="Kingpost">
   <channel name="Channel Kingpost">    
-  <!-- doesn't work. Don't know why (the same for wheels is working) -->         
     <switch name="Kingpost_On_Off">
-      <default value="5.66"/>
+      <default value="67.91"/>
       <test value="0.">
         /sim/model/airwaveXtreme150/kingpost == 0
       </test>

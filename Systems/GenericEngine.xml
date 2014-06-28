@@ -3,8 +3,8 @@
 <system name="GenericEngine">
 
   <channel name="GenericThrust">        
-    <fcs_function>
-      <function name="systems/Thrust">
+    <fcs_function name="systems/Thrust">
+      <function>
   	<product>
           <p>fcs/throttle-generic-engine-norm</p>	  
           <v>80.</v>	  
