@@ -39,8 +39,8 @@
     <item> <name>4. push A-frame (pull joystick/mouse)                           </name><value></value></item>
     <item> <name>                                                                </name><value></value></item>
     <item> <name>Note:                                                                </name><value></value></item>
-    <item> <name>Perfect landing: you are still on your feet after the flare (with parking brake on)                                                                </name><value></value></item>
-    <item> <name>Good landing: try to run-it-out (parking brake off)             </name><value></value></item>
+    <item> <name>Perfect landing: You are still on your feet after the flare (with parking brake on)                                                                </name><value></value></item>
+    <item> <name>Good landing: Try to run-it-out (parking brake off)             </name><value></value></item>
     <item> <name>Bad landing: ... press "r"                                      </name><value></value></item>  
   </checklist>
 
@@ -77,7 +77,7 @@
     <item> <name>- Choose the "chest" or "belly" hook. It's purely a matter of taste. </name><value></value></item>
     <item> <name>   (Note: Up to now the hook-shift is only animated but NOT modelled in the fdm!) </name><value></value></item> 
     <item> <name>- Chose the "drop" hook for balloon-towing.                     </name><value></value></item>
-    <item> <name>- In real life the weak link is "very weak" due to security reasons. </name><value></value></item>
+    <item> <name>- In real life the weak link is "very weak" due to safety reasons. </name><value></value></item>
     <item> <name>- Maybe you want to increase the break force of the weak link via the GUI. </name><value></value></item>
     <item> <name>- Ensure that the parking brake is released ("B").              </name><value></value></item>
     <item> <name>- It is recommended to start running during launch to reduce the rope-strain. </name><value></value></item>
@@ -94,7 +94,7 @@
     <item> <name>5. Erect pilot.                                                  </name><value></value></item>
     <item> <name>                                                                </name><value></value></item>
     <item> <name>Due to a lack in the FDM-implementation the glider likely starts bouncing and </name><value></value></item>
-    <item> <name>oscillating, if the pilot is in a prone position.               </name><value></value></item>
+    <item> <name>oscillating if the pilot is in a prone position.               </name><value></value></item>
     <item> <name>The system is more stable with an upright pilot.                </name><value></value></item>
     <item> <name>                                                                </name><value></value></item>
   </checklist>
@@ -106,9 +106,9 @@
     <item> <name>A tumble is caused due to weight shift and the spatial distance between the </name><value></value></item>
     <item> <name>center of gravity and the aero reference point.</name><value></value></item>
     <item> <name>Hence tumbling is a unique feature of hang gliders.</name><value></value></item>
-    <item> <name>In the upside down phase the pilot fails into the sail. This often breaks the wing. </name><value></value></item>
+    <item> <name>In the upside down phase the pilot falls into the sail. This often breaks the wing. </name><value></value></item>
     <item> <name>But even if the glider stays intact, it is nearly impossible to recover from a tumble.</name><value></value></item>
-    <item> <name>The only way out is throwing the rescue chute.</name><value></value></item>
+    <item> <name>The only way out is throwing the rescue parachute.</name><value></value></item>
     <item> <name></name><value></value></item>
     <item> <name>Here, tumbling is implemented in a very empirical way.</name><value></value></item>
     <item> <name>Nevertheless, tumble onset is pretty close to the real thing!</name><value></value></item>

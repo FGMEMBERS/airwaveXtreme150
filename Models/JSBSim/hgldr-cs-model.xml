@@ -37,6 +37,10 @@
      alias(rplayer.getNode("sim/multiplay/generic/float[6]")); 
    rplayer.getNode("fdm/jsbsim/gear/unit[11]/wheel-speed-fps", 1).
      alias(rplayer.getNode("sim/multiplay/generic/float[7]")); 
+   rplayer.getNode("fdm/jsbsim/aero/alpha-deg", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[8]")); 
+   rplayer.getNode("fdm/jsbsim/aero/beta-deg", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[9]")); 
 
    rplayer.getNode("sim/current-view/view-number", 1).setIntValue(1); # set view=1 to prevent deselected helmet
 
@@ -101,6 +105,8 @@
    rplayer.getNode("fdm/jsbsim/fcs/parachute-pos-norm", 1).unalias(); 
    rplayer.getNode("fdm/jsbsim/gear/unit[10]/wheel-speed-fps", 1).unalias(); 
    rplayer.getNode("fdm/jsbsim/gear/unit[11]/wheel-speed-fps", 1).unalias(); 
+   rplayer.getNode("fdm/jsbsim/aero/alpha-deg", 1).unalias();
+   rplayer.getNode("fdm/jsbsim/aero/beta-deg", 1).unalias();
 
    # unalias ambient material
    rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/ambient/red", 1).unalias();

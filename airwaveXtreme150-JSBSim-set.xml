@@ -176,7 +176,9 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
     <float n="4" alias="/controls/flight/elevator-trim"/>
     <float n="5" alias="/fdm/jsbsim/fcs/parachute-pos-norm"/>
     <float n="6" alias="/fdm/jsbsim/gear/unit[10]/wheel-speed-fps"/>
-    <float n="7" alias="/fdm/jsbsim/gear/unit[11]/wheel-speed-fps"/>        
+    <float n="7" alias="/fdm/jsbsim/gear/unit[11]/wheel-speed-fps"/>
+    <float n="8" alias="/fdm/jsbsim/aero/alpha-deg"/>
+    <float n="9" alias="/fdm/jsbsim/aero/beta-deg"/>     
     <int n="0" alias="/sim/model/airwaveXtreme150/kingpost_mp"/>
     <int n="1" alias="/sim/model/airwaveXtreme150/single_surface_mp"/>
     <int n="2" alias="/sim/model/airwaveXtreme150/wheels_mp"/> 
@@ -485,7 +487,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
 
       <key>
         <name>S</name>
-        <desc>toggle imperial/metric units for instruments"</desc>
+        <desc>toggle imperial/metric units for instruments</desc>
       </key>
       <key>
         <name>}/{</name>
@@ -502,8 +504,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
       <line>Important:</line>
       <line>Detailed descriptions in "Help - Aircraft Checklists"</line> 
       <line> </line>       
-      <line>Choose predefined variant "ZeroVariantForAutosave" to enable</line>
-      <line>   autosave of individual settings.</line> 
+      <line>Choose predefined variant "ZeroVariantForAutosave" to enable autosave of individual settings.</line>
       <line>Individual colours are not transmitted over multiplayer</line>
       <line> </line>      
  
@@ -594,6 +595,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
       <tow>
         <brake-force type="float">1000</brake-force>
         <elastic-constant type="float">9000</elastic-constant>
+	<length type="float">60.</length>
       </tow>
       <rope>
         <rope-diameter-mm type="float">8</rope-diameter-mm>
