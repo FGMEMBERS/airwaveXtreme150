@@ -1,0 +1,122 @@
+<PropertyList>
+
+  <checklist>
+    <title>Ground Handling</title>  
+    <item> <name>There are 2 different modes to control the hang glider on ground: walking and running. </name><value></value></item>
+    <item> <name>walking: - forced movement with fixed step size                 </name><value></value></item>
+    <item> <name>running: - motion due to external forces/moments                </name><value></value></item>
+    <item> <name>            - superimposes walking-mode                            </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>Controls:                                                       </name><value></value></item>
+    <item> <name>  mode   |       forward/backward      |       sideward     |    turning    |</name><value></value></item>
+    <item> <name>------------------------------------------------</name><value></value></item>
+    <item> <name>walking  |          arrow up/down       |  arrow left/right  | Insert/Enter |</name><value></value></item>
+    <item> <name>running  | increase/decrease throttle |           -           |     rudder    |</name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>The running force (forward) is set to 0 by once only pressing 3/PgDn (backward) and vice versa. </name><value></value></item>
+    <item> <name>Same control behavior with walking (Movement stops after 1x pressing the opposite direction).</name><value></value></item>
+    <item> <name>Once in air all forces are set to 0.                         </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>Breaks ("b") are usable.                                        </name><value></value></item>
+    <item> <name>The parking-brake ("B") is set automatically after inserting the legs.</name><value></value></item>
+    <item> <name>Running forces release the parking-brake automatically (see BREAK-instrument in panel).</name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>Recover (pick yourself up after a crash) with "r"               </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+  </checklist>
+
+  <checklist>
+    <title>Take-off and Touch down</title>  
+    <item> <name>Take-off:                                                       </name><value></value></item>
+    <item> <name>Positioning and alignment in "walking"-mode                     </name><value></value></item>
+    <item> <name>From mountain: Run forward ("running"-mode)                     </name><value></value></item>
+    <item> <name>From flat terrain: "s" + increase throttle or Ctrl-U            </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>Touch down:                                                     </name><value></value></item>
+    <item> <name>1. erect pilot (this is important for reasonable flares!)       </name><value></value></item>
+    <item> <name>2. wait until running animation starts (altitude less than 10ft)</name><value></value></item>
+    <item> <name>3. reduce speed to trim speed while keeping altitude            </name><value></value></item>
+    <item> <name>4. push A-frame (pull joystick/mouse)                           </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>Note:                                                                </name><value></value></item>
+    <item> <name>Perfect landing: You are still on your feet after the flare (with parking brake on)                                                                </name><value></value></item>
+    <item> <name>Good landing: Try to run-it-out (parking brake off)             </name><value></value></item>
+    <item> <name>Bad landing: ... press "r"                                      </name><value></value></item>  
+  </checklist>
+
+  <checklist>
+    <title>Winch</title>  
+    <item> <name>Ctrl-w: place winch                                             </name><value></value></item>
+    <item> <name>w       : clutch in / de-clutch winch                           </name><value></value></item>
+    <item> <name>W       : release rope                                          </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>- Configure the winch via the GUI.                              </name><value></value></item>
+    <item> <name>- Choose the "chest" or "belly" hook. It's purely a matter of taste. </name><value></value></item>
+    <item> <name>   (Note: Up to now the hook-shift is only animated but NOT modelled in the fdm!) </name><value></value></item> 
+    <item> <name>- Release the parking-brake before launch.                      </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>Step towing:                                                    </name><value></value></item>
+    <item> <name>---------                                                      </name><value></value></item>
+    <item> <name>1. After coming up over the winch, don't release the tow ...    </name><value></value></item>
+    <item> <name>2. ... de-clutch the winch instead ("w").                       </name><value></value></item>
+    <item> <name>3. Quickly turn downwind and fly back to over the launch position. </name><value></value></item>
+    <item> <name>4. Slowly turn back upwind. Be careful not to touch the rope with your wing! </name><value></value></item>
+    <item> <name>5. Clutch in the winch ("w") and perform the next step.         </name><value></value></item>
+    <item> <name>6. Usually you should end up higher than in the previous step.  </name><value></value></item>
+    <item> <name>7. Repeat as necessary.                                         </name><value></value></item>
+  </checklist>
+
+  <checklist>
+    <title>Aerotow</title>  
+    <item> <name>Ctrl-o: find towplane and hook in                               </name><value></value></item>
+    <item> <name>o       : hook in                                               </name><value></value></item>
+    <item> <name>O      : release tow                                            </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>- Configure aerotow via the GUI.                                </name><value></value></item>
+    <item> <name>- Choose the "chest" or "belly" hook. It's purely a matter of taste. </name><value></value></item>
+    <item> <name>   (Note: Up to now the hook-shift is only animated but NOT modelled in the fdm!) </name><value></value></item> 
+    <item> <name>- Chose the "drop" hook for balloon-towing.                     </name><value></value></item>
+    <item> <name>- In real life the weak link is "very weak" due to safety reasons. </name><value></value></item>
+    <item> <name>- Maybe you want to increase the break force of the weak link via the GUI. </name><value></value></item>
+    <item> <name>- Ensure that the parking brake is released ("B").              </name><value></value></item>
+    <item> <name>- It is recommended to start running during launch to reduce the rope-strain. </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>Balloon drop:                                                   </name><value></value></item>
+    <item> <name>(Experimental)                                                  </name><value></value></item>
+
+    <item> <name>----------                                                      </name><value></value></item>
+    <item> <name>1. Set weak link break force to max.                            </name><value></value></item>
+    <item> <name>2. Recommended rope lenght is 5-10m.                            </name><value></value></item>
+    <item> <name>3. Recommended rope elastic constant is 5000-10000N (?)         </name><value></value></item>
+    <item> <name>4. Choose "drop" hook.                                          </name><value></value></item>
+    <item> <name>5. Erect pilot.                                                  </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+    <item> <name>Due to a lack in the FDM-implementation the glider likely starts bouncing and </name><value></value></item>
+    <item> <name>oscillating if the pilot is in a prone position.               </name><value></value></item>
+    <item> <name>The system is more stable with an upright pilot.                </name><value></value></item>
+    <item> <name>                                                                </name><value></value></item>
+  </checklist>
+
+  <checklist>
+    <title>Tumble</title>  
+    <item> <name>In real life a tumble starts, if the angle of attack becomes markedly negative.  </name><value></value></item> 
+    <item> <name>This could occur in strong turbulence or (failed) aerobatics. </name><value></value></item>
+    <item> <name>A tumble is caused due to weight shift and the spatial distance between the </name><value></value></item>
+    <item> <name>center of gravity and the aero reference point.</name><value></value></item>
+    <item> <name>Hence tumbling is a unique feature of hang gliders.</name><value></value></item>
+    <item> <name>In the upside down phase the pilot falls into the sail. This often breaks the wing. </name><value></value></item>
+    <item> <name>But even if the glider stays intact, it is nearly impossible to recover from a tumble.</name><value></value></item>
+    <item> <name>The only way out is throwing the rescue parachute.</name><value></value></item>
+    <item> <name></name><value></value></item>
+    <item> <name>Here, tumbling is implemented in a very empirical way.</name><value></value></item>
+    <item> <name>Nevertheless, tumble onset is pretty close to the real thing!</name><value></value></item>
+    <item> <name>Due to the implementation it IS possible to recover. But it is extremely difficult. </name><value></value></item>
+    <item> <name>Thus don't lose time and throw the chute ("}")!</name><value></value></item>
+    <item> <name></name><value></value></item>
+  </checklist>
+
+</PropertyList>
+
+

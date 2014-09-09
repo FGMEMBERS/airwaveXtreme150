@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+ 
+<PropertyList>
+
+ <fx>
+ 
+  <engine>
+   <name>engine</name>
+   <path>Sounds/wasp.wav</path>
+   <mode>looped</mode>
+   <property>/sim/model/airwaveXtreme150/engine_running</property>
+   <volume>
+    <property>/fdm/jsbsim/external_reactions/GenericEngine/magnitude</property>
+    <factor>0.0125</factor>
+    <min>0.9</min>
+    <offset>0.</offset>
+   </volume>
+
+   <pitch>
+    <property>/fdm/jsbsim/external_reactions/GenericEngine/magnitude</property>
+    <factor>0.01875</factor>
+    <min>0.</min>
+    <max>0.0</max>
+    <offset>0.5</offset>
+   </pitch>
+  </engine>
+
+  <wind>
+   <name>wind</name>
+   <mode>looped</mode>
+   <path>Sounds/wind.wav</path>
+   <property>/velocities/airspeed-kt</property>
+   <volume>
+    <property>/position/altitude-ft</property>
+    <factor>-0.000015</factor>
+    <offset>1.0</offset>
+    <min>0.1</min>
+    <max>1.0</max>
+   </volume>
+   <volume>
+     <property>/velocities/airspeed-kt</property>
+     <factor>0.013</factor>
+     <min>0.03</min>
+     <max>1.2</max>
+   </volume>
+   <pitch>
+    <property>/velocities/airspeed-kt</property>
+    <factor>0.012</factor>
+    <offset>1.25</offset>
+   </pitch>
+  </wind> 
+ 
+  <variometer>
+   <name>variometer</name>
+   <mode>looped</mode>
+   <path>Aircraft/airwaveXtreme150/Sounds/vario.wav</path>
+   <condition>
+    <greater-than>
+     <property>velocities/vertical-speed-fps</property>
+     <value>0.01</value>
+    </greater-than>
+    <property>instrumentation/variometer/switch</property>
+   </condition>
+   <pitch>
+    <property>velocities/vertical-speed-fps</property>
+    <factor>0.125</factor>
+    <offset>1.0</offset>
+   </pitch>
+   <pitch>
+    <property>instrumentation/variometer/sensitivity</property>
+    <factor>1.0</factor>
+    <offset>0.0</offset>
+   </pitch>
+   <volume>
+    <property>instrumentation/variometer/volume</property>
+    <factor>1</factor>
+    <offset>0.0</offset>
+   </volume>
+  </variometer>
+
+  <whack>
+   <name>whack</name>
+   <mode>once</mode>
+   <path>Aircraft/airwaveXtreme150/Sounds/whack.wav</path>
+   <condition>
+    <property>gear/gear[6]/wow</property>
+   </condition>
+   <volume>
+    <factor>1</factor>
+    <offset>1.0</offset>
+    <min>0.0</min>
+    <max>5.0</max>
+   </volume>
+  </whack> 
+  
+ </fx>
+ 
+</PropertyList>

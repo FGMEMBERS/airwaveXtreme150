@@ -1,0 +1,950 @@
+<?xml version="1.0"?> 
+<!--
+************************************************************************
+Hang glider simulation config.  This file ties together all the
+components used by FGFS to represent a generic hang glider.
+Components include the flight data model, instrument panel, and
+external model.
+
+Flight model details: 
+Aircraft/UIUC/airwaveXtreme150-v1-nl/README.airwaveXtreme150.html
+
+External model details:  
+Aircraft/airwaveXtreme150/Models/uiuc/hgldr-cs/README.TXT 
+(courtesy of Captain Slug, captainslg@aol.com)
+
+Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
+             Feb 18, 2012 D-NXKT, D_NXKT@yahoo.de
+	     June 10, 2012 D-NXKT, D_NXKT@yahoo.de
+	     July 14, 2012 D-NXKT
+	     July 2nd, 2013 D-NXKT
+	     June 22, 2014 D-NXKT
+************************************************************************
+-->
+
+<PropertyList>
+
+ <sim>
+
+  <description>Airwave Xtreme 150 hang glider (JSBSim)</description>
+
+  <author>Michael Selig, Captain Slug, D-NXKT</author>
+  <aircraft-version>June 2014</aircraft-version>
+  <flight-model>jsb</flight-model>
+  <aero>Models/JSBSim/airwaveXtreme150-JSBSim</aero>
+
+  <checklists include="airwaveXtreme150-JSBSim-checklists.xml"/>
+    
+  <startup>
+    <splash-texture>Aircraft/airwaveXtreme150/splash.png</splash-texture>
+    <splash-title>Airwave Xtreme 150</splash-title>
+  </startup>
+
+  <sound>
+   <path>Aircraft/airwaveXtreme150/Sounds/airwaveXtreme150-sound-JSBSim.xml</path>
+  </sound>
+
+  <panel>
+   <!-- generic panel imperial units -->
+   <path>Aircraft/airwaveXtreme150/Panels/generic-panel-imperial-units.xml</path>   
+   <visibility>false</visibility>
+   <hide-nonzero-view>false</hide-nonzero-view>
+   <hide-nonzero-heading-offset>false</hide-nonzero-heading-offset>
+  </panel>
+
+  <panel_2>
+   <!-- generic panel metric units -->
+   <path>Aircraft/airwaveXtreme150/Panels/generic-panel-metric-units.xml</path>
+  </panel_2>
+
+  <model>
+   <path>Aircraft/airwaveXtreme150/Models/JSBSim/hgldr-cs-model.xml</path>
+   
+   <livery>
+    <file type="string"/>
+   </livery>
+   
+   <airwaveXtreme150>
+    <material>
+
+     <LeadingEdge>
+      <!-- rgb 0.034118 0.65 0.246706 amb 0.034118 0.65 0.246706 emis 0 0 0 spec 1 1 1 shi 32 trans 0  -->
+      <diffuse>
+       <red>0.034118</red>
+       <green>0.65</green>
+       <blue>0.246706</blue>
+      </diffuse>
+      <ambient>
+       <red alias="/sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/red"/>
+       <green alias="/sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/green"/>
+       <blue alias="/sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/blue"/>       
+      </ambient>
+      <transparency>
+       <alpha>1.0</alpha>
+      </transparency>
+     </LeadingEdge>
+
+     <SailUpper>
+      <!-- rgb 0.949968 0.949968 0.949968 amb 0.949968 0.949968 0.949968 emis 0 0 0 spec 1 1 1 shi 32 trans 0.05  -->
+      <diffuse>
+       <red>0.949968</red>
+       <green>0.949968</green>
+       <blue>0.949968</blue>
+      </diffuse>
+      <ambient>
+       <red alias="/sim/model/airwaveXtreme150/material/SailUpper/diffuse/red"/>
+       <green alias="/sim/model/airwaveXtreme150/material/SailUpper/diffuse/green"/>
+       <blue alias="/sim/model/airwaveXtreme150/material/SailUpper/diffuse/blue"/>       
+      </ambient>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>
+     </SailUpper>
+
+     <TrailingEdge>
+      <!-- rgb 0.949968 0.949968 0.949968 amb 0.949968 0.949968 0.949968 emis 0 0 0 spec 1 1 1 shi 32 trans 0.05  -->
+      <diffuse>
+       <red>0.949968</red>
+       <green>0.949968</green>
+       <blue>0.949968</blue>
+      </diffuse>
+      <ambient>
+       <red alias="/sim/model/airwaveXtreme150/material/TrailingEdge/diffuse/red"/>
+       <green alias="/sim/model/airwaveXtreme150/material/TrailingEdge/diffuse/green"/>
+       <blue alias="/sim/model/airwaveXtreme150/material/TrailingEdge/diffuse/blue"/>       
+      </ambient>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>
+     </TrailingEdge>
+
+     <SailLower>
+      <!-- rgb 1 1 0 amb 1 1 0 emis 0 0 0 spec 1 1 1 shi 32 trans 0.05  -->
+      <diffuse>
+       <red>1</red>
+       <green>1</green>
+       <blue>0</blue>
+      </diffuse>
+      <ambient>
+       <red alias="/sim/model/airwaveXtreme150/material/SailLower/diffuse/red"/>
+       <green alias="/sim/model/airwaveXtreme150/material/SailLower/diffuse/green"/>
+       <blue alias="/sim/model/airwaveXtreme150/material/SailLower/diffuse/blue"/>       
+      </ambient>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>
+     </SailLower>
+
+     <SailLowerStripe>
+      <!-- rgb 0.034 0.65 0.247 amb 0.034 0.65 0.247 emis 0 0 0 spec 1 1 1 shi 32 trans 0.05  -->
+      <diffuse>
+       <red>0.034</red>
+       <green>0.65</green>
+       <blue>0.247</blue>
+      </diffuse>
+      <ambient>
+       <red alias="/sim/model/airwaveXtreme150/material/SailLowerStripe/diffuse/red"/>
+       <green alias="/sim/model/airwaveXtreme150/material/SailLowerStripe/diffuse/green"/>
+       <blue alias="/sim/model/airwaveXtreme150/material/SailLowerStripe/diffuse/blue"/>       
+      </ambient>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>  
+     </SailLowerStripe>
+
+    </material>
+    
+    <kingpost type="bool">0</kingpost>
+    <single_surface type="bool">0</single_surface>
+    <wheels type="bool">0</wheels>
+    <on_ground type="bool">0</on_ground> 
+    
+    <kingpost_mp       alias="/sim/model/airwaveXtreme150/kingpost"/>        <!-- needed for multiplayer -->
+    <single_surface_mp alias="/sim/model/airwaveXtreme150/single_surface"/>  <!-- needed for multiplayer -->
+    <wheels_mp         alias="/sim/model/airwaveXtreme150/wheels"/>          <!-- needed for multiplayer --> 
+              
+   </airwaveXtreme150>
+
+  </model>
+
+  <multiplay>
+   <generic>
+    <float n="0" alias="/animation/running_leg_left"/>
+    <float n="1" alias="/animation/running_leg_right"/>
+    <float n="2" alias="/animation/running_leg"/>
+    <float n="3" alias="/animation/running_leg_sign"/> 
+    <float n="4" alias="/controls/flight/elevator-trim"/>
+    <float n="5" alias="/fdm/jsbsim/fcs/parachute-pos-norm"/>
+    <float n="6" alias="/fdm/jsbsim/gear/unit[10]/wheel-speed-fps"/>
+    <float n="7" alias="/fdm/jsbsim/gear/unit[11]/wheel-speed-fps"/>
+    <float n="8" alias="/fdm/jsbsim/aero/alpha-deg"/>
+    <float n="9" alias="/fdm/jsbsim/aero/beta-deg"/>     
+    <int n="0" alias="/sim/model/airwaveXtreme150/kingpost_mp"/>
+    <int n="1" alias="/sim/model/airwaveXtreme150/single_surface_mp"/>
+    <int n="2" alias="/sim/model/airwaveXtreme150/wheels_mp"/> 
+    <!-- <int n="3" alias="/gear/gear[2]/wow"/> -->
+    <int n="3" alias="/sim/model/airwaveXtreme150/on_ground"/>
+   </generic>
+  </multiplay>
+
+<!--       	  
+     	      y       
+     	      |  x	 
+     	      | / 
+     	      |/ 
+     	      ______z
+     	     
+            View-System
+-->		  
+
+    <view n="0">
+      <internal archive="y">true</internal>
+      <config>
+        <pitch-offset-deg>-13.0</pitch-offset-deg>   
+   <!--Right--> <x-offset-m archive="y">0.</x-offset-m>
+   <!--Up-->    <y-offset-m archive="y">-0.05</y-offset-m>
+   <!--Back-->  <z-offset-m archive="y">-0.5</z-offset-m>
+      </config>
+    </view>
+<!--
+  <view n="1">
+   <config>
+    <eye-heading-deg-path>/orientation/gamma-horiz-deg</eye-heading-deg-path>
+   </config>
+  </view>
+-->
+  <view n="100">
+    <name>Keel View</name>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <x-offset-m archive="y" type="double">0.00</x-offset-m>
+      <y-offset-m archive="y" type="double">-0.21</y-offset-m>
+      <z-offset-m archive="y" type="double">2.6</z-offset-m>
+      <pitch-offset-deg type="double">0</pitch-offset-deg>
+    </config>
+  </view>
+
+  <!-- right wingtip -->
+  <view n="101">
+    <name>Right Wingtip View</name>
+    <enabled type="bool">true</enabled>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <x-offset-m archive="y" type="double">5.15</x-offset-m>
+      <y-offset-m archive="y" type="double">0.25</y-offset-m>
+      <z-offset-m archive="y" type="double">1.</z-offset-m>
+      <pitch-offset-deg type="double">-8</pitch-offset-deg>
+      <heading-offset-deg type="double">75.0</heading-offset-deg>
+    </config>
+  </view>
+  
+  <!-- left wingtip -->
+  <view n="102">
+    <name>Left Wingtip View</name>
+    <enabled type="bool">true</enabled>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <x-offset-m archive="y" type="double">-5.15</x-offset-m>
+      <y-offset-m archive="y" type="double">0.25</y-offset-m>
+      <z-offset-m archive="y" type="double">1.</z-offset-m>
+      <pitch-offset-deg type="double">-8</pitch-offset-deg>
+      <heading-offset-deg type="double">-75.0</heading-offset-deg>
+    </config>
+  </view>
+
+  <!-- top of harness -->
+  <view n="103">
+    <name>Harness View</name>
+    <enabled type="bool">true</enabled>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <x-offset-m archive="y" type="double">0.</x-offset-m>
+      <y-offset-m archive="y" type="double">0.0</y-offset-m>
+      <z-offset-m archive="y" type="double">1.14</z-offset-m>
+      <pitch-offset-deg type="double">0.</pitch-offset-deg>
+      <heading-offset-deg type="double">0.</heading-offset-deg>
+    </config>
+  </view>
+
+  <current-view><view-number type="int">8</view-number></current-view> 
+       
+  <menubar>
+   <default>
+    <menu n="10">
+     <label>Airwave Xtreme 150</label>
+     <enabled type="bool">true</enabled>     
+
+     <item>
+      <label>---------------------------</label>    
+      <enabled>false</enabled>
+     </item>
+
+     <item>
+      <label>Predefined Variants </label>
+       <binding>
+        <command>nasal</command>
+        <script>aircraft.livery.dialog.open()</script>
+       </binding>
+     </item>
+
+     <item>                               
+      <label>----- Manual Customization -----</label>    
+      <enabled>false</enabled>
+     </item>
+
+     <item>
+      <label>Toggle Single/Double Surface </label>
+       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/airwaveXtreme150/single_surface</property>
+        <value>0</value>
+       </binding>
+     </item>	
+
+     <item>
+      <label>Toggle With/Without Kingpost </label>
+       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/airwaveXtreme150/kingpost</property>
+        <value>0</value>
+       </binding>
+     </item>	
+
+     <item>
+      <label>Toggle With/Without Wheels </label>
+       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/airwaveXtreme150/wheels</property>
+        <value>0</value>
+       </binding>
+     </item>	
+
+     <item>     
+      <label>Customise Colours</label>
+       <binding>
+        <command>nasal</command>
+	<script>
+	 material.showDialog("/sim/model/airwaveXtreme150/material/LeadingEdge/", nil, 10);
+         material.showDialog("/sim/model/airwaveXtreme150/material/SailUpper/", nil, 240);
+         material.showDialog("/sim/model/airwaveXtreme150/material/TrailingEdge/", nil, 470);	 
+         material.showDialog("/sim/model/airwaveXtreme150/material/SailLower/", nil, 710);
+         material.showDialog("/sim/model/airwaveXtreme150/material/SailLowerStripe/", nil, 950);	 
+        </script>
+       </binding>
+     </item>       
+
+     <item>
+      <label>---------------------------</label>    
+      <enabled>false</enabled>
+     </item>
+
+     <item>
+      <label>Performance Settings</label>
+       <binding>
+        <command>nasal</command>
+        <script>airwaveXtreme150.performance_settings_dialog.open()</script>
+       </binding>
+       <binding>       
+        <command>nasal</command>
+        <script>
+         var weight_lbs = getprop("/fdm/jsbsim/inertia/empty-weight-lbs");
+         var weight_kg = weight_lbs * 0.453592;
+         setprop("/fdm/jsbsim/inertia/empty-weight-kg",weight_kg);
+         
+         var weight_lbs = getprop("/fdm/jsbsim/inertia/pointmass-weight-lbs");
+         var weight_kg = weight_lbs * 0.453592;
+         setprop("/fdm/jsbsim/inertia/pointmass-weight-kg",weight_kg);
+
+         var weight_lbs = getprop("/fdm/jsbsim/inertia/weight-lbs");
+         var weight_kg = weight_lbs * 0.453592;
+         setprop("/fdm/jsbsim/inertia/weight-kg",weight_kg);
+
+         var area_sqft = getprop("/fdm/jsbsim/metrics/Sw-sqft");
+         var area_sqm = area_sqft * 0.09290;
+         setprop("/fdm/jsbsim/metrics/Sw-sqm",area_sqm);
+        </script>
+       </binding>
+     </item>	
+
+     <item>
+       <label>Winch Settings</label>
+       <binding>
+     	 <command>nasal</command>
+     	 <script>airwaveXtreme150.winch_dialog.open()</script>
+       </binding>
+     </item>
+
+     <item>
+       <label>Aerotow Settings</label>
+       <binding>
+     	 <command>nasal</command>
+     	 <script>airwaveXtreme150.aerotow_dialog.open()</script>
+       </binding>
+     </item>
+
+     <item>
+      <label>Select Hook</label>
+       <binding>
+        <command>nasal</command>
+        <script>airwaveXtreme150.hook_dialog.open()</script>
+       </binding>
+     </item>	
+    
+     <item>
+      <label>----------- Misc. -----------</label>    
+      <enabled>false</enabled>
+     </item>
+
+     <item>
+      <label>Variometer</label>
+      <binding>
+        <command>nasal</command>
+        <script>airwaveXtreme150.variometer.toggle()</script>
+      </binding>
+     </item>
+
+     <item>
+      <label>Toggle Pilot Animation Rotate + Yaw</label>
+       <binding>
+        <command>property-toggle</command>
+        <!-- <property>sim/auto-coordination</property> -->
+        <property>controls/flight/auto-coordination</property>
+        <value>0</value> 
+       </binding>
+     </item>	
+    
+    </menu>
+   </default>
+  </menubar>
+        
+  <help>
+   <title>Airwave Xtreme 150</title>
+      <key>
+        <name>9/PgUp</name>
+        <desc>running forward / increase throttle</desc>
+      </key>
+      <key>
+        <name>3/PgDn</name>    
+        <desc>running backward / decrease throttle</desc>
+      </key>
+      <key>
+        <name>0/INSERT</name>
+        <desc>turn pilot left (on ground / no fdm function in air)</desc>
+      </key>
+      <key>
+        <name>ENTER</name>
+        <desc>turn pilot right (on ground / no fdm function in air)</desc>
+      </key>
+      <key>
+        <name>Arrow Keys</name>
+        <desc>move pilot around (see Checklist: Ground Handling)</desc>
+      </key>
+      
+      <key>
+        <name>g/G</name>
+        <desc>legs into/out of harness</desc>
+      </key>
+      <key>
+        <name>7/Home</name>
+        <desc>more prone pilot</desc>
+      </key>
+      <key>
+        <name>1/End</name>
+        <desc>erect pilot</desc>
+      </key>
+      <key>
+        <name>w, W, Ctrl-w</name>
+        <desc>winch-keys (see Checklist: Winch)</desc>
+      </key>
+      <key>
+        <name>o, O, Ctrl-o</name>
+        <desc>aerotow-keys (see Checklist: Aerotow)</desc>
+      </key>
+       <key>
+        <name>s</name>
+        <desc>toggle start/stop generic engine</desc>
+      </key>     
+      <key>
+        <name>Ctrl-u</name>
+        <desc>jump up 1000ft</desc>
+      </key>
+      <key>
+        <name>P</name>
+        <desc>toggle generic panel on/off</desc>
+      </key>
+
+      <key>
+        <name>S</name>
+        <desc>toggle imperial/metric units for instruments</desc>
+      </key>
+      <key>
+        <name>}/{</name>
+        <desc>deploy parachute / retract parachute</desc>
+      </key>
+      <key>
+        <name>r</name>
+        <desc>recover (pick oneself up after a fall/crash)</desc>
+      </key>
+
+      <line> </line>
+      <line>Best flown with "Keel View" </line>
+      <line> </line>
+      <line>Important:</line>
+      <line>Detailed descriptions in "Help - Aircraft Checklists"</line> 
+      <line> </line>       
+      <line>Choose predefined variant "ZeroVariantForAutosave" to enable autosave of individual settings.</line>
+      <line>Individual colours are not transmitted over multiplayer</line>
+      <line> </line>      
+ 
+      <line>Note: </line>             
+      <line>This hang glider is a conversion of the LaRCsim/UIUC fdm.</line>
+      <line>Flying (under positiv g-force conditions) is quite realistic. </line> 
+      <line>Feel the influence of wind, turbulence, thermals and ridge lift!</line>
+      <line>Appropriate settings for ridge lift is wind with 15-20kt normal</line>
+      <line> to the slope orientation in all altitudes.  </line>
+      <line>Be careful with the angle of attack in strong winds on ground!</line>
+      <line> </line>
+      <line>More useful information about fdm:</line>
+      <line>/Aircraft/UIUC/airwaveXtreme150-v1-nl/README.airwaveXtreme150.html</line>   
+      <line> </line> 
+  </help>
+
+  <aircraft-data>
+  
+    <path>/sim/model/airwaveXtreme150/kingpost</path>
+    <path>/sim/model/airwaveXtreme150/single_surface</path>
+    <path>/sim/model/airwaveXtreme150/wheels</path>
+
+    <path>/sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/red</path>
+    <path>/sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/green</path>
+    <path>/sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/blue</path>	
+    <path>/sim/model/airwaveXtreme150/material/LeadingEdge/transparency/alpha</path>
+    
+    <path>/sim/model/airwaveXtreme150/material/SailUpper/diffuse/red</path>
+    <path>/sim/model/airwaveXtreme150/material/SailUpper/diffuse/green</path>
+    <path>/sim/model/airwaveXtreme150/material/SailUpper/diffuse/blue</path>	
+    <path>/sim/model/airwaveXtreme150/material/SailUpper/transparency/alpha</path>
+    
+    <path>/sim/model/airwaveXtreme150/material/TrailingEdge/diffuse/red</path>
+    <path>/sim/model/airwaveXtreme150/material/TrailingEdge/diffuse/green</path>
+    <path>/sim/model/airwaveXtreme150/material/TrailingEdge/diffuse/blue</path>	
+    <path>/sim/model/airwaveXtreme150/material/TrailingEdge/transparency/alpha</path>
+    
+    <path>/sim/model/airwaveXtreme150/material/SailLower/diffuse/red</path>
+    <path>/sim/model/airwaveXtreme150/material/SailLower/diffuse/green</path>
+    <path>/sim/model/airwaveXtreme150/material/SailLower/diffuse/blue</path>	
+    <path>/sim/model/airwaveXtreme150/material/SailLower/transparency/alpha</path>
+    
+    <path>/sim/model/airwaveXtreme150/material/SailLowerStripe/diffuse/red</path>
+    <path>/sim/model/airwaveXtreme150/material/SailLowerStripe/diffuse/green</path>
+    <path>/sim/model/airwaveXtreme150/material/SailLowerStripe/diffuse/blue</path>	
+    <path>/sim/model/airwaveXtreme150/material/SailLowerStripe/transparency/alpha</path>
+
+    <path>/fdm/jsbsim/aero/max-glide-ratio</path>
+    <path>/fdm/jsbsim/inertia/pointmass-weight-lbs</path>
+    <path>/fdm/jsbsim/metrics/Sw-sqft</path>   
+
+    <path>/controls/flight/auto-coordination</path>
+
+    <path>/sim/panel/visibility</path>
+    <path>/sim/panel/path</path>
+
+    <path>/sim/hitches/aerotow/tow/length</path>
+    <path>/sim/hitches/aerotow/tow/brake-force</path>
+    <path>/sim/hitches/aerotow/tow/elastic-constant</path>
+    <path>/sim/hitches/aerotow/rope/rope-diameter-mm</path>
+    <path>/sim/hitches/aerotow/force_name_jsbsim</path>        
+    <path>/sim/hitches/winch/tow/initial-tow-length-m</path>
+    <path>/sim/hitches/winch/tow/max-tow-length-m</path>
+    <path>/sim/hitches/winch/tow/break-force-N</path>
+    <path>/sim/hitches/winch/tow/elastic-constant</path>
+    <path>/sim/hitches/winch/rope/rope-diameter-mm</path>
+    <path>/sim/hitches/winch/tow/weight-per-m-kg-m</path>
+    <path>/sim/hitches/winch/winch/initial-tow-length-m</path>
+    <path>/sim/hitches/winch/winch/max-tow-length-m</path>
+    <path>/sim/hitches/winch/winch/max-power-kW</path>
+    <path>/sim/hitches/winch/winch/max-force-N</path>
+    <path>/sim/hitches/winch/winch/max-spool-speed-m-s</path>
+    <path>/sim/hitches/winch/winch/max-unspool-speed-m-s</path>
+    <path>/sim/hitches/winch/winch/spool-acceleration-m-s-s</path>
+    <path>/sim/hitches/winch/force_name_jsbsim</path>    
+ 
+  </aircraft-data>
+
+
+  <hitches>
+    <aerotow>
+      <local-pos-x type="float">1.5</local-pos-x>
+      <local-pos-y type="float"> 0.00</local-pos-y>
+      <local-pos-z type="float">-0.3</local-pos-z>
+      <force-is-calculated-by-other type="bool">false</force-is-calculated-by-other>
+      <mp-auto-connect-period type="float">0.0</mp-auto-connect-period>
+      <force_name_jsbsim type="string">chest</force_name_jsbsim>
+      <tow>
+        <brake-force type="float">1000</brake-force>
+        <elastic-constant type="float">9000</elastic-constant>
+	<length type="float">60.</length>
+      </tow>
+      <rope>
+        <rope-diameter-mm type="float">8</rope-diameter-mm>
+      </rope>
+    </aerotow>
+    <winch>
+      <force_name_jsbsim type="string">belly</force_name_jsbsim>
+      <local-pos-x type="float">0.0</local-pos-x>
+      <local-pos-y type="float">0.00</local-pos-y>
+      <local-pos-z type="float">0.0</local-pos-z>
+      <automatic-release-angle-deg type="float">380.</automatic-release-angle-deg>
+      <winch>
+        <open-toprope type="bool">true</open-toprope>
+        <open-bottomrope type="bool">true</open-bottomrope>
+        <initial-tow-length-m type="float">800.</initial-tow-length-m>
+        <max-tow-length-m type="float">1500.</max-tow-length-m> 
+        <max-force-N type="float">800.</max-force-N>
+        <max-power-kW type="float">10.</max-power-kW>
+        <max-spool-speed-m-s type="float">20.</max-spool-speed-m-s>
+        <max-unspool-speed-m-s type="float">20.</max-unspool-speed-m-s>
+        <rel-speed alias="/sim/hitches/winch/winch/actual-spool-speed-m-s"/>
+        <spool-acceleration-m-s-s type="float">5.</spool-acceleration-m-s-s>
+      </winch>
+      <tow>
+        <break-force-N type="float">1500</break-force-N>
+        <elastic-constant type="float">40000</elastic-constant>
+        <weight-per-m-kg-m type="float">0.01</weight-per-m-kg-m>
+      </tow>
+      <rope>
+        <!-- <path_to_model type="string">Aircraft/airwaveXtreme150/Models/Ropes/towropes.xml</path_to_model> -->
+        <rope-diameter-mm type="float">20</rope-diameter-mm>
+      </rope>
+    </winch>
+  </hitches>
+
+
+  <status>beta</status>
+  <rating>
+   <FDM type="int">4</FDM>
+   <systems type="int">3</systems>
+   <cockpit type="int">2</cockpit>
+   <model type="int">4</model>
+  </rating>
+
+ </sim>
+
+ <input>
+  <keyboard>
+   <key n="115">
+    <name>s</name>
+    <desc>Toggle Engine Running</desc>
+    <binding>
+     <command>property-toggle</command>
+     <property>/sim/model/airwaveXtreme150/engine_running</property>
+    </binding>
+   </key>
+
+   <key n="57">
+    <name>9</name>
+      <desc>Increase running force</desc>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+ 	<command>property-adjust</command>
+ 	<property>/fdm/jsbsim/fcs/running-force-norm</property>
+ 	<step>0.02</step>
+ 	<min>0</min>
+ 	<max>1</max>
+      </binding>
+      <binding>
+ 	<command>property-adjust</command>
+ 	<property>/fdm/jsbsim/fcs/throttle-generic-engine-norm</property>
+ 	<step>0.02</step>
+ 	<min>0</min>
+ 	<max>1</max>
+      </binding>
+   </key>    
+
+   <key n="360">
+    <name>PageUp</name>
+      <desc>Increase running force</desc>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+ 	<command>property-adjust</command>
+ 	<property>/fdm/jsbsim/fcs/running-force-norm</property>
+ 	<step>0.02</step>
+ 	<min>0</min>
+ 	<max>1</max>
+      </binding>
+      <binding>
+ 	<command>property-adjust</command>
+ 	<property>/fdm/jsbsim/fcs/throttle-generic-engine-norm</property>
+ 	<step>0.02</step>
+ 	<min>0</min>
+ 	<max>1</max>
+      </binding>
+   </key>    
+
+   <key n="51">
+    <name>3</name>
+      <desc>Decrease running force to zero</desc>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+ 	<command>property-adjust</command>
+ 	<property>/fdm/jsbsim/fcs/running-force-norm</property>
+ 	<step>-0.02</step>
+ 	<min>-1.</min>
+ 	<max>0.</max>
+      </binding>
+      <binding>
+ 	<command>property-adjust</command>
+ 	<property>/fdm/jsbsim/fcs/throttle-generic-engine-norm</property>
+ 	<step>-0.02</step>
+ 	<min>0</min>
+ 	<max>1</max>
+      </binding>
+   </key>
+
+   <key n="361">
+    <name>PageDown</name>
+      <desc>Decrease running force to zero</desc>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+ 	<command>property-adjust</command>
+ 	<property>/fdm/jsbsim/fcs/running-force-norm</property>
+ 	<step>-0.02</step>
+ 	<min>-1.</min>
+ 	<max>0.</max>
+      </binding>
+      <binding>
+ 	<command>property-adjust</command>
+ 	<property>/fdm/jsbsim/fcs/throttle-generic-engine-norm</property>
+ 	<step>-0.02</step>
+ 	<min>0</min>
+ 	<max>1</max>
+      </binding>
+   </key>
+
+   <key n="10">
+    <name>Enter</name>
+    <desc>Turning moment right</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>property-adjust</command>
+     <property>/fdm/jsbsim/fcs/turning-moment-norm</property>
+     <step type="double">0.05</step>
+  	  <min>0.</min>
+  	  <max>1.</max>
+    </binding>
+   </key>
+
+   <key n="269">
+    <name>Enter</name>
+    <desc>Turning moment right</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>property-adjust</command>
+     <property>/fdm/jsbsim/fcs/turning-moment-norm</property>
+     <step type="double">0.05</step>
+  	  <min>0.</min>
+  	  <max>1.</max>
+    </binding>
+   </key>
+
+   <key n="364">
+    <name>Insert</name>
+    <desc>Turning moment left</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>property-adjust</command>
+     <property>/fdm/jsbsim/fcs/turning-moment-norm</property>
+     <step type="double">-0.05</step>
+  	  <min>-1.</min>
+  	  <max>0.</max>
+    </binding>
+   </key>
+
+   <key n="114">
+     <name>r</name>
+     <desc>recover</desc>
+     <binding>
+       <command>nasal</command>
+       <script>
+         setprop("orientation/roll-deg", 0); 
+         setprop("orientation/pitch-deg", 0);
+      </script>
+     </binding>
+   </key>
+
+   <key n="356">
+     <name>Left</name>
+     <desc>move left</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>property-adjust</command>
+     <property>animation/side</property>
+     <step type="double">-0.05</step>
+  	  <min>-1.</min>
+  	  <max>0.</max>
+    </binding>
+   </key>
+   <key n="358">
+     <name>Right</name>
+     <desc>move right</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>property-adjust</command>
+     <property>animation/side</property>
+     <step type="double">0.05</step>
+  	  <min>0.</min>
+  	  <max>1.</max>
+    </binding>
+   </key>
+   <key n="357">
+     <name>Up</name>
+     <desc>move forward</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>property-adjust</command>
+     <property>animation/ahead</property>
+     <step type="double">0.05</step>
+  	  <min>0.</min>
+  	  <max>1.</max>
+    </binding>
+   </key>
+   <key n="359">
+     <name>Down</name>
+     <desc>move backward</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>property-adjust</command>
+     <property>animation/ahead</property>
+     <step type="double">-0.05</step>
+  	  <min>-1.</min>
+  	  <max>0.</max>
+    </binding>
+   </key>
+
+   <key n="15">
+     <name>Ctrl-o</name>
+     <desc>Find towplane</desc>
+     <binding>
+       <command>nasal</command>
+       <script>towing.findBestAIObject()</script>
+     </binding>
+   </key>
+   
+   <key n="111">
+     <name>o</name>
+     <desc>Hook on towplane</desc>
+     <binding>
+       <command>nasal</command>
+       <script>towing.closeHitch()</script>
+     </binding>
+   </key>
+   
+   <key n="79">
+     <name>O</name>
+     <desc>Release drag hook</desc>
+     <binding>
+       <command>nasal</command>
+       <script>towing.releaseHitch("aerotow")</script>
+     </binding>
+   </key>
+
+   <key n="23">
+     <name>Ctrl-w</name>
+     <desc>Place Winch and hook in</desc>
+     <binding>
+       <command>nasal</command>
+       <!-- <script>towing.setWinchPositionAuto()</script> -->
+       <script>airwaveXtreme150.setWinchPositionTwoStageRelease()</script>
+     </binding>
+   </key>
+   
+   <key n="119">
+     <name>w</name>
+     <desc>Start winch</desc>
+     <binding>
+       <command>nasal</command>
+       <script>towing.runWinch()</script>
+     </binding>
+   </key>
+
+   <key n="87">
+     <name>W</name>
+     <desc>Release winch hook</desc>
+     <binding>
+       <command>nasal</command>
+       <!-- <script>towing.releaseHitch("winch")</script> -->
+       <script>airwaveXtreme150.releaseHitch()</script>
+     </binding>
+   </key>
+
+  </keyboard> 
+ </input> 
+ 
+ <nasal>
+  <airwaveXtreme150>
+   <file>Aircraft/airwaveXtreme150/Nasal/running.nas</file> 
+   <file>Aircraft/airwaveXtreme150/Nasal/ViewAnimation.nas</file>
+   <file>Aircraft/airwaveXtreme150/Nasal/liveries.nas</file>
+   <file>Aircraft/airwaveXtreme150/Nasal/dialogs.nas</file>
+   <file>Aircraft/airwaveXtreme150/Nasal/SetDefaults.nas</file>
+   <file>Aircraft/airwaveXtreme150/Nasal/TwoStageRelease.nas</file>   
+  </airwaveXtreme150>
+ </nasal>    
+   
+ <instrumentation>
+  <variometer>
+   <switch type="bool">1</switch>
+   <volume type="float">0.5</volume>
+   <sensitivity type="float">0.175</sensitivity>
+  </variometer>
+ </instrumentation>
+
+ <fdm>
+   <jsbsim>
+     <aero>
+       <max-glide-ratio type="float">14.15</max-glide-ratio>
+     </aero>
+     <inertia>
+      <pointmass-weight-lbs type="float">200.</pointmass-weight-lbs>
+     </inertia>
+     <metrics>
+      <Sw-sqft type="float">154.0</Sw-sqft>
+     </metrics>
+     <fcs>
+       <parachute-pos-norm type="double">0.</parachute-pos-norm>       
+       <running-force-norm type="double">0.</running-force-norm>
+       <throttle-generic-engine-norm type="double">0.</throttle-generic-engine-norm>
+       <turning-moment-norm type="double">0.</turning-moment-norm> 
+     </fcs> 
+    </jsbsim>
+ </fdm>
+ 
+ <controls>
+   <flight>
+     <elevator-trim type="double">0.0</elevator-trim>
+     <auto-coordination-factor type="float">0.5</auto-coordination-factor>
+   </flight>
+   <gear>
+     <brake-parking type="double">1</brake-parking>
+     <antiskid      type="bool">false</antiskid>
+   </gear> 
+ </controls> 
+
+ <animation>
+   <side type="float">0.</side>
+   <ahead type="float">0.</ahead>
+ </animation>
+   
+</PropertyList>

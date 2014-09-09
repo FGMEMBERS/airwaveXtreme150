@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<PropertyList include="airwaveXtreme150-JSBSim-set.xml">
+ <sim>
+  <description>Alias for airwaveXtreme150-JSBSim</description>
+ </sim>
+</PropertyList>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<system name="Wheels">
+  <channel name="Channel Wheels">    
+    <!-- ugly fall back solution! No chance with using retractable properties! -->         
+    <switch name="Wheels_On_Off">
+      <default value="-22.59842"/>
+      <test value="0.">
+        /sim/model/airwaveXtreme150/wheels == 0
+      </test>
+      <output>gear/unit[10]/z-position</output>
+      <output>gear/unit[11]/z-position</output>
+    </switch>             
+  </channel>
+</system>
+

@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <fdm>
+  <jsbsim>
+   <aero>
+    <max-glide-ratio>10.</max-glide-ratio>
+   </aero>
+   <inertia>
+    <pointmass-weight-lbs>200.</pointmass-weight-lbs>
+   </inertia>
+   <metrics>
+    <Sw-sqft>154.0</Sw-sqft>
+   </metrics>
+  </jsbsim>
+ </fdm>
+
+ <sim>
+ 
+  <model>
+
+   <livery>
+    <name type="string" archive="n">SingleSurface_Pink</name>
+   </livery>
+   
+   <airwaveXtreme150>
+     <name type="string" archive="n">SingleSurface_Pink</name>
+
+     <single_surface type="bool">true</single_surface>
+     <kingpost       type="bool">true</kingpost>
+     <wheels         type="bool">true</wheels> 
+
+    <material>
+
+     <LeadingEdge>
+      <diffuse>
+       <red>0.</red>
+       <green>0.</green>
+       <blue>1.</blue>
+      </diffuse>
+      <transparency>
+       <alpha>1.0</alpha>
+      </transparency>
+     </LeadingEdge>
+
+     <SailUpper>
+      <diffuse>
+       <red>1.</red>
+       <green>0.</green>
+       <blue>1.</blue>
+      </diffuse>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>
+     </SailUpper>
+
+     <TrailingEdge>
+      <diffuse>
+       <red>0.949968</red>
+       <green>0.949968</green>
+       <blue>0.949968</blue>
+      </diffuse>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>
+     </TrailingEdge>
+
+     <SailLower>
+      <diffuse>
+       <red>0.</red>
+       <green>0.</green>
+       <blue>1.</blue>
+      </diffuse>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>
+     </SailLower>
+
+     <SailLowerStripe>
+      <diffuse>
+       <red>0.</red>
+       <green>1.</green>
+       <blue>1.</blue>
+      </diffuse>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>  
+     </SailLowerStripe>
+
+    </material>
+    
+   </airwaveXtreme150>
+   
+  </model>
+  
+ </sim>
+   
+</PropertyList>

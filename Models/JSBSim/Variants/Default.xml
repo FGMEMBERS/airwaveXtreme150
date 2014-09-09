@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <fdm>
+  <jsbsim>
+   <aero>
+    <max-glide-ratio>14.1</max-glide-ratio>
+   </aero>
+   <inertia>
+    <pointmass-weight-lbs>200.</pointmass-weight-lbs>
+   </inertia>
+   <metrics>
+    <Sw-sqft>154.0</Sw-sqft>
+   </metrics>
+  </jsbsim>
+ </fdm>
+
+ <sim>
+ 
+  <model>
+
+   <livery>
+    <name type="string">Default</name>
+   </livery>
+
+   <airwaveXtreme150>
+     <name type="string">Default</name>
+
+     <single_surface type="bool">false</single_surface>
+     <kingpost       type="bool">false</kingpost>
+     <wheels         type="bool">false</wheels> 
+     
+    <material>
+
+     <LeadingEdge>
+      <!-- rgb 0.034118 0.65 0.246706 amb 0.034118 0.65 0.246706 emis 0 0 0 spec 1 1 1 shi 32 trans 0  -->
+      <diffuse>
+       <red>0.034118</red>
+       <green>0.65</green>
+       <blue>0.246706</blue>
+      </diffuse>
+      <ambient>
+       <red>0.034118</red>
+       <green>0.65</green>
+       <blue>0.246706</blue>
+      </ambient>
+      <transparency>
+       <alpha>1.0</alpha>
+      </transparency>
+     </LeadingEdge>
+
+     <SailUpper>
+      <!-- rgb 0.949968 0.949968 0.949968 amb 0.949968 0.949968 0.949968 emis 0 0 0 spec 1 1 1 shi 32 trans 0.05  -->
+      <diffuse>
+       <red>0.949968</red>
+       <green>0.949968</green>
+       <blue>0.949968</blue>
+      </diffuse>
+      <ambient>
+       <red>0.949968</red>
+       <green>0.949968</green>
+       <blue>0.949968</blue>
+      </ambient>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>
+     </SailUpper>
+
+     <TrailingEdge>
+      <!-- rgb 0.949968 0.949968 0.949968 amb 0.949968 0.949968 0.949968 emis 0 0 0 spec 1 1 1 shi 32 trans 0.05  -->
+      <diffuse>
+       <red>0.949968</red>
+       <green>0.949968</green>
+       <blue>0.949968</blue>
+      </diffuse>
+      <ambient>
+       <red>0.949968</red>
+       <green>0.949968</green>
+       <blue>0.949968</blue>
+      </ambient>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>
+     </TrailingEdge>
+
+     <SailLower>
+      <!-- rgb 1 1 0 amb 1 1 0 emis 0 0 0 spec 1 1 1 shi 32 trans 0.05  -->
+      <diffuse>
+       <red>1</red>
+       <green>1</green>
+       <blue>0</blue>
+      </diffuse>
+      <ambient>
+       <red>1</red>
+       <green>1</green>
+       <blue>0</blue>
+      </ambient>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>
+     </SailLower>
+
+     <SailLowerStripe>
+      <!-- rgb 0.034 0.65 0.247 amb 0.034 0.65 0.247 emis 0 0 0 spec 1 1 1 shi 32 trans 0.05  -->
+      <diffuse>
+       <red>0.034</red>
+       <green>0.65</green>
+       <blue>0.247</blue>
+      </diffuse>
+      <ambient>
+       <red>0.034</red>
+       <green>0.65</green>
+       <blue>0.247</blue>
+      </ambient>
+      <transparency>
+       <alpha>0.95</alpha>
+      </transparency>  
+     </SailLowerStripe>
+
+    </material>
+   </airwaveXtreme150>
+  </model>
+ </sim>
+</PropertyList>

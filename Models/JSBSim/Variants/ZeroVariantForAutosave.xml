@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<!-- This variant is only needed to make autosave working properly.
+     It changes nothing except the variant name in aircraft-data/airwaveXtreme150-JSBSim.xml 
+     (the aircraft autosave file). 
+     This trick prevents overwriting the custom settings by the variant settings at restart.
+ -->
+
+ <sim>
+ 
+  <model>
+
+   <livery>
+    <name type="string">ZeroVariantForAutosave</name>
+   </livery>
+   
+   <airwaveXtreme150>
+     <name type="string">ZeroVariantForAutosave</name>
+   </airwaveXtreme150>
+   
+  </model>
+  
+ </sim>
+   
+</PropertyList>

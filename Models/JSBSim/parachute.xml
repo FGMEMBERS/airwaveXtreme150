@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<!-- under construction -->
+
+ <!-- planned deployment in 3 steps:
+      1: extract bridle (chute still in container)
+      2: extract parachute lines and canopy (container vanishes or separates (submodel)
+      3: inflate canopy
+ -->
+ 
+ <path>Aircraft/airwaveXtreme150/Models/JSBSim/parachute.ac</path>
+ <nopreview/>
+ <offsets>
+  <x-m>1.5</x-m>
+  <z-m>0.</z-m>
+  <pitch-deg>75</pitch-deg>
+ </offsets>
+
+ <animation>
+  <type>select</type>
+   <object-name>Parachute</object-name>
+   <condition>
+    <greater-than>
+     <property>fdm/jsbsim/fcs/parachute-pos-norm</property>
+     <value>0.01</value>
+    </greater-than>
+   </condition>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+   <object-name>Parachute</object-name>
+   <property>fdm/jsbsim/fcs/parachute-pos-norm</property>  
+   <x-min>0.1</x-min>
+   <y-min>0.1</y-min>
+   <z-min>0.1</z-min>
+   <x-factor>1.</x-factor>
+   <y-factor>1.</y-factor>
+   <z-factor>1.</z-factor>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+   <object-name>Parachute</object-name>  
+   <property>fdm/jsbsim/aero/alpha-deg</property>    
+   <center>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+   </center>
+   <axis>
+    <x>0.</x>
+    <y>-1.</y>
+    <z>0.</z>
+   </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+   <object-name>Parachute</object-name>  
+   <property>fdm/jsbsim/aero/beta-deg</property>    
+   <center>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+   </center>
+   <axis>
+    <x>1.</x>
+    <y>0.</y>
+    <z>0.</z>
+   </axis>
+ </animation>
+
+</PropertyList>
+
+
