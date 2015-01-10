@@ -234,7 +234,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
 
   <!-- right wingtip -->
   <view n="101">
-    <name>Right Wing View</name>
+    <name>Right Wingtip View</name>
     <enabled type="bool">true</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
@@ -251,7 +251,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
   
   <!-- left wingtip -->
   <view n="102">
-    <name>Left Wing View</name>
+    <name>Left Wingtip View</name>
     <enabled type="bool">true</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
