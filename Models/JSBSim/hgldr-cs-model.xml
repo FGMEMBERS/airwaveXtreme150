@@ -21,6 +21,8 @@
    # rplayer.getNode("gear/gear[2]/wow", 1).
    rplayer.getNode("sim/model/airwaveXtreme150/on_ground", 1).
      alias(rplayer.getNode("sim/multiplay/generic/int[3]"));
+   rplayer.getNode("sim/model/airwaveXtreme150/wool-thread_mp", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/int[4]"));
    rplayer.getNode("animation/running_leg_left", 1).
      alias(rplayer.getNode("sim/multiplay/generic/float[0]"));  
    rplayer.getNode("animation/running_leg_right", 1).
@@ -41,8 +43,14 @@
      alias(rplayer.getNode("sim/multiplay/generic/float[8]")); 
    rplayer.getNode("fdm/jsbsim/aero/beta-deg", 1).
      alias(rplayer.getNode("sim/multiplay/generic/float[9]")); 
+   rplayer.getNode("instrumentation/woolthread/alpha-woolthread-deg", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[10]"));  
+   rplayer.getNode("instrumentation/woolthread/beta-woolthread-deg", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[11]"));  
 
    rplayer.getNode("sim/current-view/view-number", 1).setIntValue(1); # set view=1 to prevent deselected helmet
+   rplayer.getNode("instrumentation/woolthread/severity1", 1).setValue(0); # severity1 is not transmitted
+   rplayer.getNode("instrumentation/woolthread/severity2", 1).setValue(0); # severity2 is not transmitted
 
    # material aliases (diffuse to ambient)
    rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/ambient/red", 1).
@@ -91,10 +99,9 @@
    rplayer.getNode("sim/model/airwaveXtreme150/kingpost_mp", 1).unalias();
    rplayer.getNode("sim/model/airwaveXtreme150/single_surface_mp", 1).unalias();
    rplayer.getNode("sim/model/airwaveXtreme150/wheels_mp", 1).unalias();
-
    # rplayer.getNode("gear/gear[2]/wow", 1).unalias(); 
-   rplayer.getNode("sim/model/airwaveXtreme150/on_ground", 1).unalias(); 
-
+   rplayer.getNode("sim/model/airwaveXtreme150/on_ground", 1).unalias();    
+   rplayer.getNode("sim/model/airwaveXtreme150/wool-thread_mp", 1).unalias();   
    # rplayer.getNode("sim/current-view/view-number", 1).unalias();
 
    rplayer.getNode("animation/running_leg_left", 1).unalias();  
@@ -107,7 +114,9 @@
    rplayer.getNode("fdm/jsbsim/gear/unit[11]/wheel-speed-fps", 1).unalias(); 
    rplayer.getNode("fdm/jsbsim/aero/alpha-deg", 1).unalias();
    rplayer.getNode("fdm/jsbsim/aero/beta-deg", 1).unalias();
-
+   rplayer.getNode("instrumentation/woolthread/alpha-woolthread-deg", 1).unalias();
+   rplayer.getNode("instrumentation/woolthread/beta-woolthread-deg", 1).unalias();   
+   
    # unalias ambient material
    rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/ambient/red", 1).unalias();
    rplayer.getNode("sim/model/airwaveXtreme150/material/LeadingEdge/ambient/green", 1).unalias();
@@ -146,11 +155,36 @@
  </offsets>
 
 
+<!-- __________________ Wool Thread __________________ -->
+
+ <model>
+   <path>Aircraft/airwaveXtreme150/Models/JSBSim/wool-thread/wool-thread.xml</path>
+   <name>WoolThread</name>
+   <offsets>
+     <x-m> 0.428</x-m>
+     <y-m>-0.241</y-m>
+     <z-m>-0.400</z-m>
+     <pitch-deg>-15.</pitch-deg> 
+     <heading-deg>0.</heading-deg>
+     <roll-deg>0.</roll-deg>	     
+   </offsets> 
+ </model> 
+
+ <animation>
+   <type>select</type>
+     <object-name>WoolThread</object-name>
+     <condition>
+       <property>sim/model/airwaveXtreme150/wool-thread_mp</property>  
+     </condition>
+ </animation>
+
+
 <!-- __________________ Glider __________________ -->
 
  <animation>
   <type>rotate</type>
-   <object-name>Glider</object-name>  
+   <object-name>Glider</object-name>
+   <object-name>WoolThread</object-name>  
     <expression>
      <product>
       <property>surface-positions/left-aileron-pos-norm</property>
@@ -175,6 +209,7 @@
  <animation>
   <type>rotate</type>
    <object-name>Glider</object-name>
+   <object-name>WoolThread</object-name>
     <expression>
      <table>
       <product>
@@ -203,6 +238,7 @@
  <animation>
   <type>rotate</type>
    <object-name>Glider</object-name>
+   <object-name>WoolThread</object-name>
     <expression>
      <product>
       <property>surface-positions/rudder-pos-norm</property>

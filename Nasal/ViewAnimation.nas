@@ -1,7 +1,7 @@
 var ViewAnimation = func {
 #
 # ---------------------------------------------------------------------------------
-#                        View and Hitch Animation               Status: 20.03.2014
+#                        View and Hitch Animation               Status: 18.12.2014
 # ---------------------------------------------------------------------------------
 #
 #
@@ -31,8 +31,9 @@ var ViewAnimation = func {
 #    10   | Left Wingtip View | deflection + angle  |           -          |
 #    11   | Harness View      |      only prone     | deflection + angle   |
 #
-
 #----------------------------------------------------------------------------------
+
+var m2in = 39.3700787;
 
 var view_number = getprop("sim/current-view/view-number");
 var on_ground   = getprop("gear/gear[2]/wow");
@@ -96,23 +97,23 @@ for (var n=0; n < n_loop; n = n+1) {
   else if ( mode[n] == "hitch_animation") {
     # Point to rotate = X = (x,y,z) (hitch; FDM-system)
     if ( hitch[n] == "belly" ) {
-      var x = 0.0;
+      var x =  0.;
       var y =  0.;
       var z = -0.39;
       if ( on_ground == 0 ) rotation = 1;
       rotation_harness = 1;
     } 
     else if ( hitch[n] == "chest" ) {
-      var x =  -0.25;
+      var x = -0.25;
       var y =  0.;
       var z = -0.3;
       if ( on_ground == 0 ) rotation = 1;
       rotation_harness = 1;
     }
     else if ( hitch[n] == "drop" ) {
-      var x = 0.;
+      var x = 0.2;
       var y = 0.;
-      var z = 0.8;
+      var z = 0.6;
       if ( on_ground == 1 ) rotation = 1;
       rotation_harness = 0;
     }    
@@ -121,8 +122,6 @@ for (var n=0; n < n_loop; n = n+1) {
       var y = 0.;
       var z = 0.;
     }
-#    if ( on_ground == 0 ) rotation = 1;
-#    rotation_harness = 1;
   } # end mode hitch_animation
 
   if (n == 0 ) {
@@ -367,14 +366,20 @@ for (var n=0; n < n_loop; n = n+1) {
       var heading_xyzq = -heading_zyx - 75 ;
       setprop("sim/current-view/pitch-offset-deg",-roll_zyx);      
       setprop("sim/current-view/roll-offset-deg",pitch_xyzq);
-     setprop("sim/current-view/heading-offset-deg",heading_xyzq); 
+      setprop("sim/current-view/heading-offset-deg",heading_xyzq); 
     }
   }
   if ( mode[n] == "hitch_animation") {
-    #print("device ",device[n]);
-    setprop("sim/hitches/" ~ device[n] ~ "/local-pos-x",-x_new);
-    setprop("sim/hitches/" ~ device[n] ~ "/local-pos-y",-y_new);
-    setprop("sim/hitches/" ~ device[n] ~ "/local-pos-z",z_new);
+    #print("device ",device[n],"    hitch ",hitch[n]);
+    # rope location (obsolet since external_reactions locations are available)
+    #setprop("sim/hitches/" ~ device[n] ~ "/local-pos-x",-x_new);
+    #setprop("sim/hitches/" ~ device[n] ~ "/local-pos-y",-y_new);
+    #setprop("sim/hitches/" ~ device[n] ~ "/local-pos-z",z_new);
+    # force location
+    setprop("fdm/jsbsim/external_reactions/" ~ hitch[n]~ "/location-x-in",x_new * m2in);
+    setprop("fdm/jsbsim/external_reactions/" ~ hitch[n]~ "/location-y-in",y_new * m2in);
+    setprop("fdm/jsbsim/external_reactions/" ~ hitch[n]~ "/location-z-in",z_new * m2in);
+    
   } # end mode hitch_animation
   
 }  # end loop

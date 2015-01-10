@@ -30,7 +30,8 @@
      <single_surface type="bool">true</single_surface>
      <kingpost       type="bool">true</kingpost>
      <wheels         type="bool">true</wheels> 
-
+     <wool-thread    type="bool">true</wool-thread>
+      
     <material>
 
      <LeadingEdge>
