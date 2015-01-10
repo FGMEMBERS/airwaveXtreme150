@@ -1,4 +1,10 @@
 
+Changes January 2015 by D-NXKT:
+
+- hitch locations move with pilot in FDM (JSBSim)
+- added wool-thread
+
+
 Changes June 2014 by D-NXKT:
 
 - improved deep stall behaviour (pitch oscillation near stall)
@@ -9,7 +15,7 @@ Changes June 2014 by D-NXKT:
 - improved parachute animation (taking flow direction into account; airspeed dependent deployment time)
 - corrected kingpost contact point position
 - tweak colours in "Performance Settings" dialog
-- fix initialization bug in running.nas ("Reset" works now w/o a nasal error)
+- fix initialization bug in running.nas ("Reset" works now w/o a Nasal error)
 - fix unwanted JSBSim-messages in console 
 
 

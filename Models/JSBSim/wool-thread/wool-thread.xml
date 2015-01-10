@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>wool-thread.ac</path>
+
+<!-- __________________ Woolthread __________________ -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Segment1</object-name>
+  <object-name>Segment2</object-name>
+  <object-name>Segment3</object-name>
+  <expression>
+    <product>
+     <property>surface-positions/left-aileron-pos-norm</property>
+     <property>sim/model/airwaveXtreme150/on_ground</property>
+     <value>15.</value>
+    </product>
+  </expression>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+  <center>
+   <x-m>0.</x-m>
+   <y-m>0.</y-m>
+   <z-m>0.</z-m>
+  </center>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Segment1</object-name>
+  <object-name>Segment2</object-name>
+  <object-name>Segment3</object-name>
+  <property>instrumentation/woolthread/alpha-woolthread-deg</property>
+  <expression>
+   <sum>
+    <property>instrumentation/woolthread/alpha-woolthread-deg</property>   
+    <table>
+     <product>
+      <property>surface-positions/elevator-pos-norm</property>
+      <property>sim/model/airwaveXtreme150/on_ground</property>
+     </product>
+     <entry><ind>-1.0</ind> <dep> 10</dep></entry>
+     <entry><ind> 0.0</ind> <dep> 0</dep></entry>
+     <entry><ind> 1.0</ind> <dep>-40</dep></entry>	     
+    </table>
+   </sum>
+  </expression>
+  <axis>
+   <x>0.0</x>
+   <y>-1.0</y>
+   <z>0.0</z>
+  </axis>
+  <center>
+   <x-m>0.</x-m>
+   <y-m>0.</y-m>
+   <z-m>0.</z-m>
+  </center>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Segment1</object-name>
+  <object-name>Segment2</object-name>
+  <object-name>Segment3</object-name>
+  <property>instrumentation/woolthread/beta-woolthread-deg</property>
+  <offset-deg>0</offset-deg>
+  <factor>-1.</factor>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+  <center>
+   <x-m>0.</x-m>
+   <y-m>0.</y-m>
+   <z-m>0.</z-m>
+  </center>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Segment2</object-name>
+  <object-name>Segment3</object-name>
+  <property>instrumentation/woolthread/severity2</property>
+  <factor>5</factor>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>-1.0</z>
+  </axis>
+  <center>
+   <x-m>0.05</x-m>
+   <y-m>0.</y-m>
+   <z-m>0.</z-m>
+  </center>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Segment2</object-name>
+  <object-name>Segment3</object-name>
+  <property>instrumentation/woolthread/severity1</property>
+  <factor>5</factor>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+  <center>
+   <x-m>0.05</x-m>
+   <y-m>0.</y-m>
+   <z-m>0.</z-m>
+  </center>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Segment3</object-name>
+  <property>instrumentation/woolthread/severity2</property>
+  <factor>10.</factor>
+  <axis>
+   <x>0.0</x>
+   <y>-1.0</y>
+   <z>0.0</z>
+  </axis>
+  <center>
+   <x-m>0.08</x-m>
+   <y-m>0.</y-m>
+   <z-m>0.</z-m>
+  </center>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Segment3</object-name>
+  <property>instrumentation/woolthread/severity1</property>
+  <factor>10.</factor>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+  <center>
+   <x-m>0.08</x-m>
+   <y-m>0.</y-m>
+   <z-m>0.</z-m>
+  </center>
+ </animation>
+
+</PropertyList>
+
+

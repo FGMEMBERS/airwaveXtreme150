@@ -52,7 +52,6 @@
     <item> <name>                                                                </name><value></value></item>
     <item> <name>- Configure the winch via the GUI.                              </name><value></value></item>
     <item> <name>- Choose the "chest" or "belly" hook. It's purely a matter of taste. </name><value></value></item>
-    <item> <name>   (Note: Up to now the hook-shift is only animated but NOT modelled in the fdm!) </name><value></value></item> 
     <item> <name>- Release the parking-brake before launch.                      </name><value></value></item>
     <item> <name>                                                                </name><value></value></item>
     <item> <name>                                                                </name><value></value></item>
@@ -75,7 +74,6 @@
     <item> <name>                                                                </name><value></value></item>
     <item> <name>- Configure aerotow via the GUI.                                </name><value></value></item>
     <item> <name>- Choose the "chest" or "belly" hook. It's purely a matter of taste. </name><value></value></item>
-    <item> <name>   (Note: Up to now the hook-shift is only animated but NOT modelled in the fdm!) </name><value></value></item> 
     <item> <name>- Chose the "drop" hook for balloon-towing.                     </name><value></value></item>
     <item> <name>- In real life the weak link is "very weak" due to safety reasons. </name><value></value></item>
     <item> <name>- Maybe you want to increase the break force of the weak link via the GUI. </name><value></value></item>

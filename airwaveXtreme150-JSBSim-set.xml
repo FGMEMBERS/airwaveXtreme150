@@ -19,6 +19,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
 	     July 14, 2012 D-NXKT
 	     July 2nd, 2013 D-NXKT
 	     June 22, 2014 D-NXKT
+	     Jan 10, 2015 D-NXKT
 ************************************************************************
 -->
 
@@ -29,7 +30,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
   <description>Airwave Xtreme 150 hang glider (JSBSim)</description>
 
   <author>Michael Selig, Captain Slug, D-NXKT</author>
-  <aircraft-version>June 2014</aircraft-version>
+  <aircraft-version>January 2015</aircraft-version>
   <flight-model>jsb</flight-model>
   <aero>Models/JSBSim/airwaveXtreme150-JSBSim</aero>
 
@@ -157,12 +158,13 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
     <kingpost type="bool">0</kingpost>
     <single_surface type="bool">0</single_surface>
     <wheels type="bool">0</wheels>
+    <wool-thread type="bool">0</wool-thread>
     <on_ground type="bool">0</on_ground> 
     
     <kingpost_mp       alias="/sim/model/airwaveXtreme150/kingpost"/>        <!-- needed for multiplayer -->
     <single_surface_mp alias="/sim/model/airwaveXtreme150/single_surface"/>  <!-- needed for multiplayer -->
-    <wheels_mp         alias="/sim/model/airwaveXtreme150/wheels"/>          <!-- needed for multiplayer --> 
-              
+    <wheels_mp         alias="/sim/model/airwaveXtreme150/wheels"/>          <!-- needed for multiplayer -->
+    <wool-thread_mp    alias="/sim/model/airwaveXtreme150/wool-thread"/>     <!-- needed for multiplayer -->
    </airwaveXtreme150>
 
   </model>
@@ -178,12 +180,15 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
     <float n="6" alias="/fdm/jsbsim/gear/unit[10]/wheel-speed-fps"/>
     <float n="7" alias="/fdm/jsbsim/gear/unit[11]/wheel-speed-fps"/>
     <float n="8" alias="/fdm/jsbsim/aero/alpha-deg"/>
-    <float n="9" alias="/fdm/jsbsim/aero/beta-deg"/>     
+    <float n="9" alias="/fdm/jsbsim/aero/beta-deg"/>
+    <float n="10" alias="/instrumentation/woolthread/alpha-woolthread-deg"/>
+    <float n="11" alias="/instrumentation/woolthread/beta-woolthread-deg"/>     
     <int n="0" alias="/sim/model/airwaveXtreme150/kingpost_mp"/>
     <int n="1" alias="/sim/model/airwaveXtreme150/single_surface_mp"/>
     <int n="2" alias="/sim/model/airwaveXtreme150/wheels_mp"/> 
     <!-- <int n="3" alias="/gear/gear[2]/wow"/> -->
     <int n="3" alias="/sim/model/airwaveXtreme150/on_ground"/>
+    <int n="4" alias="/sim/model/airwaveXtreme150/wool-thread_mp"/>     
    </generic>
   </multiplay>
 
@@ -229,7 +234,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
 
   <!-- right wingtip -->
   <view n="101">
-    <name>Right Wingtip View</name>
+    <name>Right Wing View</name>
     <enabled type="bool">true</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
@@ -246,7 +251,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
   
   <!-- left wingtip -->
   <view n="102">
-    <name>Left Wingtip View</name>
+    <name>Left Wing View</name>
     <enabled type="bool">true</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
@@ -327,6 +332,15 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
        <binding>
         <command>property-toggle</command>
         <property>sim/model/airwaveXtreme150/wheels</property>
+        <value>0</value>
+       </binding>
+     </item>	
+
+     <item>
+      <label>Toggle With/Without Wool-Thread </label>
+       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/airwaveXtreme150/wool-thread</property>
         <value>0</value>
        </binding>
      </item>	
@@ -526,7 +540,8 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
     <path>/sim/model/airwaveXtreme150/kingpost</path>
     <path>/sim/model/airwaveXtreme150/single_surface</path>
     <path>/sim/model/airwaveXtreme150/wheels</path>
-
+    <path>/sim/model/airwaveXtreme150/wool-thread</path>
+    
     <path>/sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/red</path>
     <path>/sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/green</path>
     <path>/sim/model/airwaveXtreme150/material/LeadingEdge/diffuse/blue</path>	
@@ -586,9 +601,6 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
 
   <hitches>
     <aerotow>
-      <local-pos-x type="float">1.5</local-pos-x>
-      <local-pos-y type="float"> 0.00</local-pos-y>
-      <local-pos-z type="float">-0.3</local-pos-z>
       <force-is-calculated-by-other type="bool">false</force-is-calculated-by-other>
       <mp-auto-connect-period type="float">0.0</mp-auto-connect-period>
       <force_name_jsbsim type="string">chest</force_name_jsbsim>
@@ -603,9 +615,6 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
     </aerotow>
     <winch>
       <force_name_jsbsim type="string">belly</force_name_jsbsim>
-      <local-pos-x type="float">0.0</local-pos-x>
-      <local-pos-y type="float">0.00</local-pos-y>
-      <local-pos-z type="float">0.0</local-pos-z>
       <automatic-release-angle-deg type="float">380.</automatic-release-angle-deg>
       <winch>
         <open-toprope type="bool">true</open-toprope>
@@ -899,7 +908,8 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
    <file>Aircraft/airwaveXtreme150/Nasal/liveries.nas</file>
    <file>Aircraft/airwaveXtreme150/Nasal/dialogs.nas</file>
    <file>Aircraft/airwaveXtreme150/Nasal/SetDefaults.nas</file>
-   <file>Aircraft/airwaveXtreme150/Nasal/TwoStageRelease.nas</file>   
+   <file>Aircraft/airwaveXtreme150/Nasal/TwoStageRelease.nas</file>
+   <file>Aircraft/airwaveXtreme150/Nasal/WoolThread.nas</file>   
   </airwaveXtreme150>
  </nasal>    
    
@@ -909,6 +919,12 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
    <volume type="float">0.5</volume>
    <sensitivity type="float">0.175</sensitivity>
   </variometer>
+  <woolthread>
+   <alpha-woolthread-deg type="float">0.</alpha-woolthread-deg>
+   <beta-woolthread-deg type="float">0.</beta-woolthread-deg>
+   <severity1 type="float">0.</severity1>
+   <severity2 type="float">0.</severity2>
+  </woolthread> 
  </instrumentation>
 
  <fdm>
