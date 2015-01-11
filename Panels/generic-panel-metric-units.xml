@@ -44,13 +44,13 @@ override those by providing <w>Aircraft</w> and <h>..</h> properties with the
  
  <instruments>
 
-  <instrument include="../../Instruments/brakes.xml">
+  <instrument include="Aircraft/Instruments/brakes.xml">
    <name>Brake Indicator Light</name>
    <x>730</x>
    <y>20</y>
   </instrument>
 
-  <instrument include="../../Instruments/controls.xml">
+  <instrument include="Aircraft/Instruments/controls.xml">
    <name>Control Position Indicators</name>
    <x>730</x>
    <y>70</y>
@@ -58,7 +58,7 @@ override those by providing <w>Aircraft</w> and <h>..</h> properties with the
    <h>80</h>
   </instrument>
 
-  <instrument include="../../airwaveXtreme150/Panels/Instruments/asi-160-knot_mod_kmh.xml">
+  <instrument include="Instruments/asi-160-knot_mod_kmh.xml">
    <name>Airspeed Indicator</name>
    <x>395</x>
    <y>60</y>
@@ -66,7 +66,7 @@ override those by providing <w>Aircraft</w> and <h>..</h> properties with the
    <h>120</h>
   </instrument>
 
-  <instrument include="../../airwaveXtreme150/Panels/Instruments/altimeter_mod_m.xml">
+  <instrument include="Instruments/altimeter_mod_m.xml">
    <name>Altimeter</name>
    <x>515</x>
    <y>60</y>
@@ -74,7 +74,7 @@ override those by providing <w>Aircraft</w> and <h>..</h> properties with the
    <h>120</h>
   </instrument>
 
-  <instrument include="../../airwaveXtreme150/Panels/Instruments/vertical-hi_mod_ms.xml"> 
+  <instrument include="Instruments/vertical-hi_mod_ms.xml"> 
    <name>Vertical Velocity Indicator</name>
    <x>635</x>
    <y>60</y>
@@ -82,7 +82,7 @@ override those by providing <w>Aircraft</w> and <h>..</h> properties with the
    <h>120</h>
   </instrument>
 
-  <instrument include="../../Instruments/magcompass.xml">
+  <instrument include="Aircraft/Instruments/magcompass.xml">
    <name>Magnetic Compass</name>
    <x>287</x>
    <y>20</y>
