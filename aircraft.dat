@@ -1,0 +1,150 @@
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+# Aircraft:
+#
+# Simulates the Airwave Xtreme 150 hang glider
+#
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+# Authors:
+#
+# Michael Selig 
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+# Notes:
+# - Models c.g. shift by way of modifying the aerodynamics
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+init use_V_rel_wind_2U    
+init use_dyn_on_speed_curve1    
+init dyn_on_speed  2    
+init dyn_on_speed_zero 1    
+init use_Alpha_dot_on_speed 3   # [ft/sec] speed below which Alpha_dot is set to zero    
+init use_gamma_horiz_on_speed 5 # [ft/sec] speed above which Gamma_horiz_deg is used in chase view [1]
+
+
+# geometry
+geometry bw   33.6666   # [ft]
+geometry cbar  4.75     # [ft]
+geometry Sw  154.0      # [ft^2]
+
+# Moving the elevator stick simulates the pilot moving back and forth.
+# Both the c.g. shift and change in angle of attack are accounted for.
+controlSurface de 1.05 1.05 # [deg] 
+controlSurface da 20 20     # [deg]
+
+mass Weight    275      # [lb]
+mass I_xx      219.3    # [slug-ft^2]
+mass I_yy       95.6    # [slug-ft^2]
+mass I_zz      190.4    # [slug-ft^2]
+mass I_xz        8.8    # [slug-ft^2]
+
+# Apparent mass terms
+mass Mass_appMass_ratio  .2
+mass I_xx_appMass_ratio  .3
+mass I_yy_appMass_ratio  .08
+
+# Engine is used to get to altitude
+engine simpleSingle   180  # [lb]
+
+# Lift curve +-180 deg
+CL CLfade CLfade.dat 0 1 1
+
+# Drag polar from +-180 deg
+# from Ormiston (see readme file)
+CD CDfade CDfade.dat 0 1 1
+
+# Substract off some drag from the data (CDfade) above to enhance the performance
+# to better model current hang gliders.
+CD CDo -0.03
+
+# Moment curve +-180 deg
+Cm Cmfade Cmfade.dat  0 1 1
+Cm Cm_q    -5.2        # [/rad]
+
+CY CY_beta  -0.6        # [/rad]
+CY CY_p     -0.2        # [/rad]
+CY CY_r      0.4        # [/rad]
+#CY CY_dr     0.15       # [/rad]
+
+Cl Cl_beta  -0.08       # [/rad]
+Cl Cl_p     -0.5        # [/rad]
+Cl Cl_r      0.06       # [/rad]
+Cl Cl_da    -0.15       # [/rad]
+#Cl Cl_dr     0.015      # [/rad]
+
+Cn Cn_beta   0.1        # [/rad]
+Cn Cn_p     -0.06       # [/rad]
+Cn Cn_r     -0.08       # [/rad]
+#Cn Cn_r     -0.38       # [/rad]
+Cn Cn_da    -0.001      # [/rad]
+#Cn Cn_dr    -0.125      # [/rad]
+
+# nose wheel (must be position 0 if present)
+gear Dx_gear	 0 1.5     # x-offset from CG [ft]
+gear Dy_gear	 0   0     # y-offset from CG [ft]
+gear Dz_gear	 0 3.6     # z-offset from CG [ft]
+gear cgear	 0 300     # damping [lbs/ft/sec]
+gear kgear	 0 900     # springiness [lbs/ft]
+gear muGear	 0 0.01    # rolling coefficient
+gear strutLength 0 -0.5    # gear travel [ft] (not yet used)
+
+# right gear (must be position 1 if present)
+gear Dx_gear     1 -0.2    # [ft]
+gear Dy_gear     1 1.25    # [ft]
+gear Dz_gear     1  3.7    # [ft]
+gear cgear       1 600     # [lbs/ft/sec]
+gear kgear       1 900     # [lbs/ft]
+gear muGear      1 0.01    # rolling coefficient
+gear strutLength 1 2.5     # [ft]
+
+# left gear (must be position 2 if present)
+gear Dx_gear     2 -0.2    # [ft]
+gear Dy_gear     2 -1.25   # [ft]
+gear Dz_gear     2  3.7    # [ft]
+gear cgear       2 600     # [lbs/ft/sec]
+gear kgear       2 900     # [lbs/ft]
+gear muGear      2 0.01    # rolling coefficient
+gear strutLength 2 2.5     # [ft]
+
+# aft post
+gear Dx_gear     3 -6.39   # [ft]
+gear Dy_gear     3  0.0    # [ft]
+gear Dz_gear     3  0.5    # [ft]
+gear cgear       3 150     # [lbs/ft/sec]
+gear kgear       3 300     # [lbs/ft]
+gear muGear      3 0.01    # rolling coefficient
+gear strutLength 3 2.5     # [ft]
+
+# "fake" hard point in front to keep from tipping nose over
+# (D-NXKT: setting this point to hang glider nose yields to extreme bouncing.
+#          No adjustment for cgear/kgear found to prevent this! Bug?)
+gear Dx_gear	 4  12	   # [ft]
+gear Dy_gear	 4   0     # [ft]
+gear Dz_gear	 4   0     # [ft]
+gear cgear	 4 150     # [lbs/ft/sec]
+gear kgear	 4 300     # [lbs/ft]
+gear muGear	 4 0.01    # rolling coefficient
+gear strutLength 4 2.5     # [ft]
+
+# left wing tip
+gear Dx_gear     5   3.28  # [ft]
+gear Dy_gear     5  16.90  # [ft]
+gear Dz_gear     5  1.48   # [ft]
+gear cgear       5 150     # [lbs/ft/sec]
+gear kgear       5 300     # [lbs/ft]
+gear muGear      5 0.01    # rolling coefficient
+gear strutLength 5 2.5     # [ft]
+
+# right wing tip
+gear Dx_gear     6   3.28  # [ft]
+gear Dy_gear     6 -16.90  # [ft]
+gear Dz_gear     6  1.48   # [ft]
+gear cgear       6 150     # [lbs/ft/sec]
+gear kgear       6 300     # [lbs/ft]
+gear muGear      6 0.01    # rolling coefficient
+gear strutLength 6 2.5     # [ft]
+
+*
