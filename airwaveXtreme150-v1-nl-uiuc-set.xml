@@ -28,7 +28,6 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
   <flight-model>larcsim</flight-model>
   <aero>uiuc</aero>
   <uiuc-type>uiuc-hangglider</uiuc-type>
-  <aircraft-dir>Aircraft/UIUC/airwaveXtreme150-v1-nl</aircraft-dir>
 
   <startup>
     <splash-texture>Aircraft/airwaveXtreme150/splash.png</splash-texture>
