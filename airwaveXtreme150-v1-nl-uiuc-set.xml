@@ -1,4 +1,4 @@
-<?xml version="1.0"?> 
+<?xml version="1.0"?>
 <!--
 ************************************************************************
 Hang glider simulation config.  This file ties together all the
@@ -6,11 +6,11 @@ components used by FGFS to represent a generic hang glider.
 Components include the flight data model, instrument panel, and
 external model.
 
-Flight model details: 
+Flight model details:
 Aircraft/UIUC/airwaveXtreme150-v1-nl/README.airwaveXtreme150.html
 
-External model details:  
-Aircraft/airwaveXtreme150/Models/uiuc/hgldr-cs/README.TXT 
+External model details:
+Aircraft/airwaveXtreme150/Models/uiuc/hgldr-cs/README.TXT
 (courtesy of Captain Slug, captainslg@aol.com)
 
 Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
@@ -28,6 +28,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
   <flight-model>larcsim</flight-model>
   <aero>uiuc</aero>
   <uiuc-type>uiuc-hangglider</uiuc-type>
+  <variant-of>airwaveXtreme150-JSBSim</variant-of>
 
   <startup>
     <splash-texture>Aircraft/airwaveXtreme150/splash.png</splash-texture>
@@ -70,14 +71,14 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
       <pitch-offset-deg type="double">0</pitch-offset-deg>
     </config>
   </view>
-  
-  <current-view><view-number type="int">8</view-number></current-view> 
-    
+
+  <current-view><view-number type="int">8</view-number></current-view>
+
   <menubar>
    <default>
     <menu n="10">
      <label>Airwave Xtreme 150</label>
-     <enabled type="bool">true</enabled>     
+     <enabled type="bool">true</enabled>
      <item>
       <label>Toggle pilot animation rotate + yaw</label>
        <binding>
@@ -85,11 +86,11 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
         <property>controls/flight/auto-coordination</property>
         <value>0</value>
        </binding>
-     </item>	
+     </item>
     </menu>
    </default>
   </menubar>
-  
+
   <help>
    <title>Airwave Xtreme 150</title>
 
@@ -102,7 +103,7 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
         <name>3/PgDn</name>
         <desc>decrease throttle</desc>
       </key>
-      
+
       <key>
         <name>Ctrl-U</name>
         <desc>jump up 1000ft</desc>
@@ -133,10 +134,10 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
         <desc>toggle panel in "Cockpit View"</desc>
       </key>
 
-      <line> </line>      
+      <line> </line>
       <line>Best flown with "Keel View" </line>
       <line> </line>
-      
+
       <line>Take-off:</line>
       <line>Ctrl-U or incr. throttle</line>
       <line> </line>
@@ -144,17 +145,17 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
       <line>1. erect pilot</line>
       <line>2. wait until lower part of harness immerges in ground</line>
       <line>3. reduce speed to trim speed while keeping altitude</line>
-      <line>4. push A-frame (pull joystick/mouse)</line>  
-      <line> </line> 
-      <line>Note: </line>             
-      <line>This hang glider uses the LaRCsim/UIUC fdm. Flying (under positiv g-force conditions) is quite realistic. </line> 
-      <line>Unfortunately there is no conjunction of this special fdm with weather and external forces. </line> 
-      <line>Hence flying with the influence of wind, turbulence, thermals and ridge lift is NOT possible. </line> 
+      <line>4. push A-frame (pull joystick/mouse)</line>
+      <line> </line>
+      <line>Note: </line>
+      <line>This hang glider uses the LaRCsim/UIUC fdm. Flying (under positiv g-force conditions) is quite realistic. </line>
+      <line>Unfortunately there is no conjunction of this special fdm with weather and external forces. </line>
+      <line>Hence flying with the influence of wind, turbulence, thermals and ridge lift is NOT possible. </line>
       <line> </line>
       <line>More useful information about fdm:</line>
-      <line>/Aircraft/UIUC/airwaveXtreme150-v1-nl/README.airwaveXtreme150.html</line>   
-      <line> </line> 
-                  
+      <line>/Aircraft/UIUC/airwaveXtreme150-v1-nl/README.airwaveXtreme150.html</line>
+      <line> </line>
+
   </help>
 
   <status>alpha</status>

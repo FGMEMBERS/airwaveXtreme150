@@ -2,6 +2,7 @@
 
 <PropertyList include="airwaveXtreme150-JSBSim-set.xml">
  <sim>
+   <exclude-from-catalog type="bool">true</exclude-from-catalog>
   <description>Alias for airwaveXtreme150-JSBSim</description>
  </sim>
 </PropertyList>
