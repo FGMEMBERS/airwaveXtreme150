@@ -30,6 +30,12 @@ Last update: Nov 8, 2002 Michael Selig, m-selig@uiuc.edu
   <uiuc-type>uiuc-hangglider</uiuc-type>
   <variant-of>airwaveXtreme150-JSBSim</variant-of>
 
+  <tags>
+   <tag>glider</tag>
+   <tag>1990s</tag>
+   <tag>unpowered</tag>
+  </tags>
+
   <startup>
     <splash-texture>Aircraft/airwaveXtreme150/splash.png</splash-texture>
     <splash-title>Airwave Xtreme 150</splash-title>
